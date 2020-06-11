@@ -1,0 +1,922 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 46921981F609C5BA3CB72EC4EA41299D /* Build configuration list for PBXAggregateTarget "GoogleMaps" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = GoogleMaps;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		24B483DCB44BA4757C211C41967374BC /* Pods-FitnessTracker-FitnessTrackerUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A1622B9AB13037E6E2DF2FC2925883 /* Pods-FitnessTracker-FitnessTrackerUITests-dummy.m */; };
+		32D893C76A247C6DA89A44C5ACFCA136 /* Pods-FitnessTracker-FitnessTrackerUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2A2F95439CD615502F1D66A0BF170F /* Pods-FitnessTracker-FitnessTrackerUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4786EFA6A805277552C4F65D7038D82E /* Pods-FitnessTrackerTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BF14413D4FF60FC35BAF69CA3F823342 /* Pods-FitnessTrackerTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		501BE07FC0CA819CA4063028997FD53F /* Pods-FitnessTrackerTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 74EAE10B60352888967732D0B5E8364A /* Pods-FitnessTrackerTests-dummy.m */; };
+		61EB8E29253C767DA0E2EC0486E41C8E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		81AA0C5D57CDFA59B810B651AF9023EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		90CD6494F9EAAA648028128517975749 /* Pods-FitnessTracker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F1928A3E636B2FD658B5DE2D2F17BF6F /* Pods-FitnessTracker-dummy.m */; };
+		A51421D607BF90F824046C4D15B73DA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		C1D395A843027DFA607BFFFD9C7DF49E /* Pods-FitnessTracker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5F1883779CA73C4E1FD4E8E32028E3 /* Pods-FitnessTracker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4947C59C9238E5DAC27AA9CCC41A21D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A3830B6E42BFB4EA99C1158E7C744577;
+			remoteInfo = "Pods-FitnessTracker";
+		};
+		6794E036E3C2D9717D9292A2A1825AFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5B4BBC6DD552AC8943C7E22772FC1D3;
+			remoteInfo = GoogleMaps;
+		};
+		8803AA677F0398994C84FF41CE66437F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5B4BBC6DD552AC8943C7E22772FC1D3;
+			remoteInfo = GoogleMaps;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01AF48CF5646ADAB5D7324A8169AFF03 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		0521A249DC5A41C52CF5BD87BCF2E1F3 /* Pods-FitnessTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FitnessTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
+		06A1622B9AB13037E6E2DF2FC2925883 /* Pods-FitnessTracker-FitnessTrackerUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FitnessTracker-FitnessTrackerUITests-dummy.m"; sourceTree = "<group>"; };
+		10E113A97245C102A2A24A24E8B67E90 /* Pods-FitnessTracker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FitnessTracker.modulemap"; sourceTree = "<group>"; };
+		11EDD58ACA231B384CDA7C3359A12DE3 /* Pods-FitnessTracker-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FitnessTracker-resources.sh"; sourceTree = "<group>"; };
+		185215CF5A2E194BC7D3ED637ADEA1E3 /* Pods-FitnessTracker-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FitnessTracker-acknowledgements.markdown"; sourceTree = "<group>"; };
+		28B8ABC4CB09FC885AC402D4E454D93A /* Pods-FitnessTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FitnessTracker.release.xcconfig"; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		344272FE39B14BE50F1D08FAFF1614CC /* Pods-FitnessTracker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FitnessTracker-Info.plist"; sourceTree = "<group>"; };
+		34E8C172C29CC31C4104DDB84E474614 /* Pods-FitnessTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FitnessTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		42CB94DFCAE679CD34B8BE1AF3E2EB63 /* Pods-FitnessTracker-FitnessTrackerUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FitnessTracker-FitnessTrackerUITests-resources.sh"; sourceTree = "<group>"; };
+		45AD3A60E633C8AB8026CB5EDED44F78 /* Pods_FitnessTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FitnessTracker.framework; path = "Pods-FitnessTracker.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DA05197F7D24528388FAE9D93C8744B /* Pods-FitnessTracker-FitnessTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FitnessTracker-FitnessTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		57ED79F355E1756AEBD83ADDEC4C9B99 /* Pods_FitnessTracker_FitnessTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FitnessTracker_FitnessTrackerUITests.framework; path = "Pods-FitnessTracker-FitnessTrackerUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D2A2F95439CD615502F1D66A0BF170F /* Pods-FitnessTracker-FitnessTrackerUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FitnessTracker-FitnessTrackerUITests-umbrella.h"; sourceTree = "<group>"; };
+		6092055DB279F9553DBBF357409E318A /* Pods-FitnessTracker-FitnessTrackerUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FitnessTracker-FitnessTrackerUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		74EAE10B60352888967732D0B5E8364A /* Pods-FitnessTrackerTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FitnessTrackerTests-dummy.m"; sourceTree = "<group>"; };
+		815668F239E95EC3AC013A83B9C82AD8 /* Pods-FitnessTracker-FitnessTrackerUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FitnessTracker-FitnessTrackerUITests-Info.plist"; sourceTree = "<group>"; };
+		963062F6A05FB79AE347D5714565AF7D /* Pods-FitnessTrackerTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FitnessTrackerTests-Info.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AABE3D21F0BE384435A5D7C08A8FD5BB /* GoogleMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.debug.xcconfig; sourceTree = "<group>"; };
+		AC5F1883779CA73C4E1FD4E8E32028E3 /* Pods-FitnessTracker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FitnessTracker-umbrella.h"; sourceTree = "<group>"; };
+		B3DB8EF2A4BE80F617E6EFB86C68CCE0 /* Pods-FitnessTrackerTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FitnessTrackerTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		BE4EBA3E321A06B351A884C215633879 /* Pods-FitnessTrackerTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FitnessTrackerTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BF14413D4FF60FC35BAF69CA3F823342 /* Pods-FitnessTrackerTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FitnessTrackerTests-umbrella.h"; sourceTree = "<group>"; };
+		C0F23EE88A275A77E2CC84DA65FA76B2 /* Pods-FitnessTracker-FitnessTrackerUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FitnessTracker-FitnessTrackerUITests.modulemap"; sourceTree = "<group>"; };
+		C2104F226878D0221DFA260159861348 /* Pods-FitnessTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FitnessTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C38004A9D5113A38CF4B7E8AD25B458B /* Pods-FitnessTracker-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FitnessTracker-acknowledgements.plist"; sourceTree = "<group>"; };
+		C3D0978B919EA2ECF2A2F8466075BB51 /* GoogleMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.release.xcconfig; sourceTree = "<group>"; };
+		CCAF84BDED2FB6E96E950E18E0742136 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
+		D67DD3EDE7AF71CD96AE22B2D13B15F6 /* Pods_FitnessTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FitnessTrackerTests.framework; path = "Pods-FitnessTrackerTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8DB14F461CFCDEF309FF3640C1A26B7 /* Pods-FitnessTracker-FitnessTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FitnessTracker-FitnessTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D9749C783DE2314F17518DD9D7FFF231 /* Pods-FitnessTracker-FitnessTrackerUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FitnessTracker-FitnessTrackerUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E2309F84CDF17FF87E66D6CDB6B517AB /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		E2F4E7C722407F81715B67A5F9EC4FAD /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
+		F1928A3E636B2FD658B5DE2D2F17BF6F /* Pods-FitnessTracker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FitnessTracker-dummy.m"; sourceTree = "<group>"; };
+		F6CF4FC1EB14527FAEE2978841C6CC8A /* Pods-FitnessTrackerTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FitnessTrackerTests.modulemap"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		23E896B8BA57BD6FAF28C14308ADD982 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61EB8E29253C767DA0E2EC0486E41C8E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE3EF7C15AA866D7133F832E91B44F39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A51421D607BF90F824046C4D15B73DA0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8CD63ACCE67DC7F6629B6EE9874472A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81AA0C5D57CDFA59B810B651AF9023EA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1AEA1CF3E36FF8113F6FFD7526BE5F98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF84BDED2FB6E96E950E18E0742136 /* GoogleMapsBase.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		23258B9441300E23C80256BEEFD1F964 /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				5FCC553E82707BA26B1F6EDC00161B0D /* Base */,
+				387015716759109261086A8C0CA736F5 /* Maps */,
+				9601491F11C5653D98D1EB5DF2155DFE /* Support Files */,
+			);
+			name = GoogleMaps;
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		387015716759109261086A8C0CA736F5 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				F9621E38CA93CD5E47C3F28B4F0AF3DD /* Frameworks */,
+				E48211C21EA696EBC32B31525F5FFA67 /* Resources */,
+			);
+			name = Maps;
+			sourceTree = "<group>";
+		};
+		4F0E0B2AFBF3A70CEAB236EC2CD9517A /* Pods-FitnessTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				F6CF4FC1EB14527FAEE2978841C6CC8A /* Pods-FitnessTrackerTests.modulemap */,
+				BE4EBA3E321A06B351A884C215633879 /* Pods-FitnessTrackerTests-acknowledgements.markdown */,
+				B3DB8EF2A4BE80F617E6EFB86C68CCE0 /* Pods-FitnessTrackerTests-acknowledgements.plist */,
+				74EAE10B60352888967732D0B5E8364A /* Pods-FitnessTrackerTests-dummy.m */,
+				963062F6A05FB79AE347D5714565AF7D /* Pods-FitnessTrackerTests-Info.plist */,
+				BF14413D4FF60FC35BAF69CA3F823342 /* Pods-FitnessTrackerTests-umbrella.h */,
+				C2104F226878D0221DFA260159861348 /* Pods-FitnessTrackerTests.debug.xcconfig */,
+				0521A249DC5A41C52CF5BD87BCF2E1F3 /* Pods-FitnessTrackerTests.release.xcconfig */,
+			);
+			name = "Pods-FitnessTrackerTests";
+			path = "Target Support Files/Pods-FitnessTrackerTests";
+			sourceTree = "<group>";
+		};
+		5FCC553E82707BA26B1F6EDC00161B0D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1AEA1CF3E36FF8113F6FFD7526BE5F98 /* Frameworks */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		637D9171622E1EF47FDFE33A0784FB81 /* Pods-FitnessTracker */ = {
+			isa = PBXGroup;
+			children = (
+				10E113A97245C102A2A24A24E8B67E90 /* Pods-FitnessTracker.modulemap */,
+				185215CF5A2E194BC7D3ED637ADEA1E3 /* Pods-FitnessTracker-acknowledgements.markdown */,
+				C38004A9D5113A38CF4B7E8AD25B458B /* Pods-FitnessTracker-acknowledgements.plist */,
+				F1928A3E636B2FD658B5DE2D2F17BF6F /* Pods-FitnessTracker-dummy.m */,
+				344272FE39B14BE50F1D08FAFF1614CC /* Pods-FitnessTracker-Info.plist */,
+				11EDD58ACA231B384CDA7C3359A12DE3 /* Pods-FitnessTracker-resources.sh */,
+				AC5F1883779CA73C4E1FD4E8E32028E3 /* Pods-FitnessTracker-umbrella.h */,
+				34E8C172C29CC31C4104DDB84E474614 /* Pods-FitnessTracker.debug.xcconfig */,
+				28B8ABC4CB09FC885AC402D4E454D93A /* Pods-FitnessTracker.release.xcconfig */,
+			);
+			name = "Pods-FitnessTracker";
+			path = "Target Support Files/Pods-FitnessTracker";
+			sourceTree = "<group>";
+		};
+		7301D10196DE7FABC9305496B71472A9 /* Pods-FitnessTracker-FitnessTrackerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C0F23EE88A275A77E2CC84DA65FA76B2 /* Pods-FitnessTracker-FitnessTrackerUITests.modulemap */,
+				D9749C783DE2314F17518DD9D7FFF231 /* Pods-FitnessTracker-FitnessTrackerUITests-acknowledgements.markdown */,
+				6092055DB279F9553DBBF357409E318A /* Pods-FitnessTracker-FitnessTrackerUITests-acknowledgements.plist */,
+				06A1622B9AB13037E6E2DF2FC2925883 /* Pods-FitnessTracker-FitnessTrackerUITests-dummy.m */,
+				815668F239E95EC3AC013A83B9C82AD8 /* Pods-FitnessTracker-FitnessTrackerUITests-Info.plist */,
+				42CB94DFCAE679CD34B8BE1AF3E2EB63 /* Pods-FitnessTracker-FitnessTrackerUITests-resources.sh */,
+				5D2A2F95439CD615502F1D66A0BF170F /* Pods-FitnessTracker-FitnessTrackerUITests-umbrella.h */,
+				D8DB14F461CFCDEF309FF3640C1A26B7 /* Pods-FitnessTracker-FitnessTrackerUITests.debug.xcconfig */,
+				4DA05197F7D24528388FAE9D93C8744B /* Pods-FitnessTracker-FitnessTrackerUITests.release.xcconfig */,
+			);
+			name = "Pods-FitnessTracker-FitnessTrackerUITests";
+			path = "Target Support Files/Pods-FitnessTracker-FitnessTrackerUITests";
+			sourceTree = "<group>";
+		};
+		9601491F11C5653D98D1EB5DF2155DFE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AABE3D21F0BE384435A5D7C08A8FD5BB /* GoogleMaps.debug.xcconfig */,
+				C3D0978B919EA2ECF2A2F8466075BB51 /* GoogleMaps.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GoogleMaps";
+			sourceTree = "<group>";
+		};
+		A986DD8FD28347FDB92ACA08C63826AF /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				637D9171622E1EF47FDFE33A0784FB81 /* Pods-FitnessTracker */,
+				7301D10196DE7FABC9305496B71472A9 /* Pods-FitnessTracker-FitnessTrackerUITests */,
+				4F0E0B2AFBF3A70CEAB236EC2CD9517A /* Pods-FitnessTrackerTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				DF3634087891871FA7B65CC4A8E6DB71 /* Pods */,
+				EA50FB718520D0E32027E7436C5F6439 /* Products */,
+				A986DD8FD28347FDB92ACA08C63826AF /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF3634087891871FA7B65CC4A8E6DB71 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				23258B9441300E23C80256BEEFD1F964 /* GoogleMaps */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E48211C21EA696EBC32B31525F5FFA67 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E2309F84CDF17FF87E66D6CDB6B517AB /* GoogleMaps.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		EA50FB718520D0E32027E7436C5F6439 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				45AD3A60E633C8AB8026CB5EDED44F78 /* Pods_FitnessTracker.framework */,
+				57ED79F355E1756AEBD83ADDEC4C9B99 /* Pods_FitnessTracker_FitnessTrackerUITests.framework */,
+				D67DD3EDE7AF71CD96AE22B2D13B15F6 /* Pods_FitnessTrackerTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F9621E38CA93CD5E47C3F28B4F0AF3DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				01AF48CF5646ADAB5D7324A8169AFF03 /* GoogleMaps.framework */,
+				E2F4E7C722407F81715B67A5F9EC4FAD /* GoogleMapsCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		214041D51FDD4D7E714A82233F4C6D66 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4786EFA6A805277552C4F65D7038D82E /* Pods-FitnessTrackerTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AA0671B5FFFEC921CC3F6103F4F17AC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1D395A843027DFA607BFFFD9C7DF49E /* Pods-FitnessTracker-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B13809D8F43243C65C38430DD80B9056 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32D893C76A247C6DA89A44C5ACFCA136 /* Pods-FitnessTracker-FitnessTrackerUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		9DCC4AA639D5930F26717E21A052F9F0 /* Pods-FitnessTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1683533DB7DA35008633101AAE5E8EE /* Build configuration list for PBXNativeTarget "Pods-FitnessTrackerTests" */;
+			buildPhases = (
+				214041D51FDD4D7E714A82233F4C6D66 /* Headers */,
+				212AE7A5A08343B0E62D58E863C6CF56 /* Sources */,
+				D8CD63ACCE67DC7F6629B6EE9874472A /* Frameworks */,
+				BA165AF8AE8CA121BA5FFA78E6515465 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B7F5ECDA68277C44B572D94C560ECFC3 /* PBXTargetDependency */,
+			);
+			name = "Pods-FitnessTrackerTests";
+			productName = "Pods-FitnessTrackerTests";
+			productReference = D67DD3EDE7AF71CD96AE22B2D13B15F6 /* Pods_FitnessTrackerTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A3830B6E42BFB4EA99C1158E7C744577 /* Pods-FitnessTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 188251F35F9B73693959F1F8541C7341 /* Build configuration list for PBXNativeTarget "Pods-FitnessTracker" */;
+			buildPhases = (
+				8AA0671B5FFFEC921CC3F6103F4F17AC /* Headers */,
+				9D0675EECBEAE2AF898DC031AAB5C89F /* Sources */,
+				BE3EF7C15AA866D7133F832E91B44F39 /* Frameworks */,
+				8F8D6BC72840F94B7BC4B9BC33D24FD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				350B1C1CCB6D19C3B00007F71159C1FA /* PBXTargetDependency */,
+			);
+			name = "Pods-FitnessTracker";
+			productName = "Pods-FitnessTracker";
+			productReference = 45AD3A60E633C8AB8026CB5EDED44F78 /* Pods_FitnessTracker.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C4AAAE313740919DEDF5B1EF79B9BBA2 /* Pods-FitnessTracker-FitnessTrackerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14A4ECD8AE875E1588729932263B72EF /* Build configuration list for PBXNativeTarget "Pods-FitnessTracker-FitnessTrackerUITests" */;
+			buildPhases = (
+				B13809D8F43243C65C38430DD80B9056 /* Headers */,
+				1F793648D448BDD3CA99C449847F372B /* Sources */,
+				23E896B8BA57BD6FAF28C14308ADD982 /* Frameworks */,
+				F31AD408DB90E14002128721CAEFBB72 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				439D251FE244AB0BE28977D24B0C3E6B /* PBXTargetDependency */,
+			);
+			name = "Pods-FitnessTracker-FitnessTrackerUITests";
+			productName = "Pods-FitnessTracker-FitnessTrackerUITests";
+			productReference = 57ED79F355E1756AEBD83ADDEC4C9B99 /* Pods_FitnessTracker_FitnessTrackerUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = EA50FB718520D0E32027E7436C5F6439 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */,
+				A3830B6E42BFB4EA99C1158E7C744577 /* Pods-FitnessTracker */,
+				C4AAAE313740919DEDF5B1EF79B9BBA2 /* Pods-FitnessTracker-FitnessTrackerUITests */,
+				9DCC4AA639D5930F26717E21A052F9F0 /* Pods-FitnessTrackerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8F8D6BC72840F94B7BC4B9BC33D24FD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA165AF8AE8CA121BA5FFA78E6515465 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F31AD408DB90E14002128721CAEFBB72 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1F793648D448BDD3CA99C449847F372B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24B483DCB44BA4757C211C41967374BC /* Pods-FitnessTracker-FitnessTrackerUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		212AE7A5A08343B0E62D58E863C6CF56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				501BE07FC0CA819CA4063028997FD53F /* Pods-FitnessTrackerTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D0675EECBEAE2AF898DC031AAB5C89F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90CD6494F9EAAA648028128517975749 /* Pods-FitnessTracker-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		350B1C1CCB6D19C3B00007F71159C1FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleMaps;
+			target = E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */;
+			targetProxy = 6794E036E3C2D9717D9292A2A1825AFF /* PBXContainerItemProxy */;
+		};
+		439D251FE244AB0BE28977D24B0C3E6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleMaps;
+			target = E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */;
+			targetProxy = 8803AA677F0398994C84FF41CE66437F /* PBXContainerItemProxy */;
+		};
+		B7F5ECDA68277C44B572D94C560ECFC3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-FitnessTracker";
+			target = A3830B6E42BFB4EA99C1158E7C744577 /* Pods-FitnessTracker */;
+			targetProxy = 4947C59C9238E5DAC27AA9CCC41A21D5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		099B0DB20D2AC643BFEB331CA008BA85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34E8C172C29CC31C4104DDB84E474614 /* Pods-FitnessTracker.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		131356BE54884448CA49C07BEDF4BB2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		2F00EEEE31ADF3A57EAA1A8D4381694F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8DB14F461CFCDEF309FF3640C1A26B7 /* Pods-FitnessTracker-FitnessTrackerUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FitnessTracker-FitnessTrackerUITests/Pods-FitnessTracker-FitnessTrackerUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FitnessTracker-FitnessTrackerUITests/Pods-FitnessTracker-FitnessTrackerUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		34AFEC335FEE22B1EF4EE10F5182E365 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DA05197F7D24528388FAE9D93C8744B /* Pods-FitnessTracker-FitnessTrackerUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FitnessTracker-FitnessTrackerUITests/Pods-FitnessTracker-FitnessTrackerUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FitnessTracker-FitnessTrackerUITests/Pods-FitnessTracker-FitnessTrackerUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4C7A6602B0F181EE38C778A703F28594 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2104F226878D0221DFA260159861348 /* Pods-FitnessTrackerTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FitnessTrackerTests/Pods-FitnessTrackerTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FitnessTrackerTests/Pods-FitnessTrackerTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6E7DAA6CD71A150EBD722A0EA3E98FDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28B8ABC4CB09FC885AC402D4E454D93A /* Pods-FitnessTracker.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		756D24090B60019A35E8BCBE286EEEB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0521A249DC5A41C52CF5BD87BCF2E1F3 /* Pods-FitnessTrackerTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FitnessTrackerTests/Pods-FitnessTrackerTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FitnessTrackerTests/Pods-FitnessTrackerTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8CE5BA3EF4F6FABF028CE30772ECDA11 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3D0978B919EA2ECF2A2F8466075BB51 /* GoogleMaps.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E1E452060D51DF935547186CE54B26CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AABE3D21F0BE384435A5D7C08A8FD5BB /* GoogleMaps.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F090CD07A80273D5A73C8EA19224ADDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14A4ECD8AE875E1588729932263B72EF /* Build configuration list for PBXNativeTarget "Pods-FitnessTracker-FitnessTrackerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F00EEEE31ADF3A57EAA1A8D4381694F /* Debug */,
+				34AFEC335FEE22B1EF4EE10F5182E365 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		188251F35F9B73693959F1F8541C7341 /* Build configuration list for PBXNativeTarget "Pods-FitnessTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				099B0DB20D2AC643BFEB331CA008BA85 /* Debug */,
+				6E7DAA6CD71A150EBD722A0EA3E98FDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46921981F609C5BA3CB72EC4EA41299D /* Build configuration list for PBXAggregateTarget "GoogleMaps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1E452060D51DF935547186CE54B26CC /* Debug */,
+				8CE5BA3EF4F6FABF028CE30772ECDA11 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				131356BE54884448CA49C07BEDF4BB2A /* Debug */,
+				F090CD07A80273D5A73C8EA19224ADDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1683533DB7DA35008633101AAE5E8EE /* Build configuration list for PBXNativeTarget "Pods-FitnessTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C7A6602B0F181EE38C778A703F28594 /* Debug */,
+				756D24090B60019A35E8BCBE286EEEB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
