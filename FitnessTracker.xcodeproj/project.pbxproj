@@ -10,12 +10,22 @@
 		97B2E5D98515C3B74B1A2D33 /* Pods_FitnessTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43F57F70B59E027F7760A21 /* Pods_FitnessTracker.framework */; };
 		B423D4B92492431A00B25D69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423D4B82492431A00B25D69 /* AppDelegate.swift */; };
 		B423D4BB2492431A00B25D69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423D4BA2492431A00B25D69 /* SceneDelegate.swift */; };
-		B423D4BD2492431A00B25D69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423D4BC2492431A00B25D69 /* ViewController.swift */; };
-		B423D4C02492431A00B25D69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B423D4BE2492431A00B25D69 /* Main.storyboard */; };
 		B423D4C22492431C00B25D69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B423D4C12492431C00B25D69 /* Assets.xcassets */; };
 		B423D4C52492431C00B25D69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B423D4C32492431C00B25D69 /* LaunchScreen.storyboard */; };
 		B423D4D02492431D00B25D69 /* FitnessTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423D4CF2492431D00B25D69 /* FitnessTrackerTests.swift */; };
 		B423D4DB2492431D00B25D69 /* FitnessTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423D4DA2492431D00B25D69 /* FitnessTrackerUITests.swift */; };
+		B423D4F32492515100B25D69 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423D4ED2492515100B25D69 /* MainPresenter.swift */; };
+		B423D4F42492515100B25D69 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423D4EE2492515100B25D69 /* MainViewController.swift */; };
+		B423D4F52492515100B25D69 /* MainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423D4EF2492515100B25D69 /* MainBuilder.swift */; };
+		B423D4F62492515100B25D69 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423D4F02492515100B25D69 /* MainInteractor.swift */; };
+		B423D4F72492515100B25D69 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423D4F12492515100B25D69 /* MainView.swift */; };
+		B423D4F82492515100B25D69 /* MainDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423D4F22492515100B25D69 /* MainDataFlow.swift */; };
+		B423D4FC2497C7C000B25D69 /* CustomableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B423D4FB2497C7C000B25D69 /* CustomableView.swift */; };
+		B423D5022497CC1E00B25D69 /* darkGoogleMapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = B423D4FE2497CC1E00B25D69 /* darkGoogleMapStyle.json */; };
+		B423D5032497CC1E00B25D69 /* darkGoogleMapsStyleWithourMarkers.json in Resources */ = {isa = PBXBuildFile; fileRef = B423D4FF2497CC1E00B25D69 /* darkGoogleMapsStyleWithourMarkers.json */; };
+		B423D5042497CC1E00B25D69 /* lightGoogleMapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = B423D5002497CC1E00B25D69 /* lightGoogleMapStyle.json */; };
+		B423D5052497CC1E00B25D69 /* lightGoogleMapsStyleWithoutMarkers.json in Resources */ = {isa = PBXBuildFile; fileRef = B423D5012497CC1E00B25D69 /* lightGoogleMapsStyleWithoutMarkers.json */; };
+		B423D5072497D66900B25D69 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = B423D5062497D66900B25D69 /* View.xib */; };
 		C38D695D4ACB6A1525BD3470 /* Pods_FitnessTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0610BDB163B680113CCA7FF /* Pods_FitnessTrackerTests.framework */; };
 		EE980D78649ED39ADBE10529 /* Pods_FitnessTracker_FitnessTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E1B881A1B0C867E2C784D1 /* Pods_FitnessTracker_FitnessTrackerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -46,8 +56,6 @@
 		B423D4B52492431A00B25D69 /* FitnessTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B423D4B82492431A00B25D69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B423D4BA2492431A00B25D69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B423D4BC2492431A00B25D69 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B423D4BF2492431A00B25D69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B423D4C12492431C00B25D69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B423D4C42492431C00B25D69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B423D4C62492431C00B25D69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,6 +65,18 @@
 		B423D4D62492431D00B25D69 /* FitnessTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitnessTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B423D4DA2492431D00B25D69 /* FitnessTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessTrackerUITests.swift; sourceTree = "<group>"; };
 		B423D4DC2492431D00B25D69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B423D4ED2492515100B25D69 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		B423D4EE2492515100B25D69 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B423D4EF2492515100B25D69 /* MainBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBuilder.swift; sourceTree = "<group>"; };
+		B423D4F02492515100B25D69 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		B423D4F12492515100B25D69 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		B423D4F22492515100B25D69 /* MainDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataFlow.swift; sourceTree = "<group>"; };
+		B423D4FB2497C7C000B25D69 /* CustomableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomableView.swift; sourceTree = "<group>"; };
+		B423D4FE2497CC1E00B25D69 /* darkGoogleMapStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = darkGoogleMapStyle.json; sourceTree = "<group>"; };
+		B423D4FF2497CC1E00B25D69 /* darkGoogleMapsStyleWithourMarkers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = darkGoogleMapsStyleWithourMarkers.json; sourceTree = "<group>"; };
+		B423D5002497CC1E00B25D69 /* lightGoogleMapStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lightGoogleMapStyle.json; sourceTree = "<group>"; };
+		B423D5012497CC1E00B25D69 /* lightGoogleMapsStyleWithoutMarkers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lightGoogleMapsStyleWithoutMarkers.json; sourceTree = "<group>"; };
+		B423D5062497D66900B25D69 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		C0610BDB163B680113CCA7FF /* Pods_FitnessTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitnessTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E291FE48B263B451EF12B80B /* Pods-FitnessTracker-FitnessTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessTracker-FitnessTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-FitnessTracker-FitnessTrackerUITests/Pods-FitnessTracker-FitnessTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F43F57F70B59E027F7760A21 /* Pods_FitnessTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitnessTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,13 +146,10 @@
 		B423D4B72492431A00B25D69 /* FitnessTracker */ = {
 			isa = PBXGroup;
 			children = (
-				B423D4B82492431A00B25D69 /* AppDelegate.swift */,
-				B423D4BA2492431A00B25D69 /* SceneDelegate.swift */,
-				B423D4BC2492431A00B25D69 /* ViewController.swift */,
-				B423D4BE2492431A00B25D69 /* Main.storyboard */,
-				B423D4C12492431C00B25D69 /* Assets.xcassets */,
-				B423D4C32492431C00B25D69 /* LaunchScreen.storyboard */,
-				B423D4C62492431C00B25D69 /* Info.plist */,
+				B423D4FA2497C7A500B25D69 /* Utils */,
+				B423D4F92492519A00B25D69 /* Resources */,
+				B423D4EA249250F200B25D69 /* Application */,
+				B423D4E924924FE600B25D69 /* Enviroments */,
 			);
 			path = FitnessTracker;
 			sourceTree = "<group>";
@@ -153,6 +170,75 @@
 				B423D4DC2492431D00B25D69 /* Info.plist */,
 			);
 			path = FitnessTrackerUITests;
+			sourceTree = "<group>";
+		};
+		B423D4E924924FE600B25D69 /* Enviroments */ = {
+			isa = PBXGroup;
+			children = (
+				B423D4C62492431C00B25D69 /* Info.plist */,
+			);
+			path = Enviroments;
+			sourceTree = "<group>";
+		};
+		B423D4EA249250F200B25D69 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				B423D4B82492431A00B25D69 /* AppDelegate.swift */,
+				B423D4BA2492431A00B25D69 /* SceneDelegate.swift */,
+				B423D4EB2492510200B25D69 /* Flows */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		B423D4EB2492510200B25D69 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				B423D4EC2492513700B25D69 /* MainScreen */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		B423D4EC2492513700B25D69 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B423D4EF2492515100B25D69 /* MainBuilder.swift */,
+				B423D4F22492515100B25D69 /* MainDataFlow.swift */,
+				B423D4F02492515100B25D69 /* MainInteractor.swift */,
+				B423D4ED2492515100B25D69 /* MainPresenter.swift */,
+				B423D4F12492515100B25D69 /* MainView.swift */,
+				B423D4EE2492515100B25D69 /* MainViewController.swift */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		B423D4F92492519A00B25D69 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B423D4C12492431C00B25D69 /* Assets.xcassets */,
+				B423D4C32492431C00B25D69 /* LaunchScreen.storyboard */,
+				B423D5062497D66900B25D69 /* View.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B423D4FA2497C7A500B25D69 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B423D4FD2497CBF800B25D69 /* GoogleMapsStyles */,
+				B423D4FB2497C7C000B25D69 /* CustomableView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B423D4FD2497CBF800B25D69 /* GoogleMapsStyles */ = {
+			isa = PBXGroup;
+			children = (
+				B423D4FF2497CC1E00B25D69 /* darkGoogleMapsStyleWithourMarkers.json */,
+				B423D4FE2497CC1E00B25D69 /* darkGoogleMapStyle.json */,
+				B423D5012497CC1E00B25D69 /* lightGoogleMapsStyleWithoutMarkers.json */,
+				B423D5002497CC1E00B25D69 /* lightGoogleMapStyle.json */,
+			);
+			path = GoogleMapsStyles;
 			sourceTree = "<group>";
 		};
 		F21418B3FE78EB0F2B9C0FC1 /* Pods */ = {
@@ -277,9 +363,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B423D5072497D66900B25D69 /* View.xib in Resources */,
+				B423D5042497CC1E00B25D69 /* lightGoogleMapStyle.json in Resources */,
 				B423D4C52492431C00B25D69 /* LaunchScreen.storyboard in Resources */,
 				B423D4C22492431C00B25D69 /* Assets.xcassets in Resources */,
-				B423D4C02492431A00B25D69 /* Main.storyboard in Resources */,
+				B423D5052497CC1E00B25D69 /* lightGoogleMapsStyleWithoutMarkers.json in Resources */,
+				B423D5032497CC1E00B25D69 /* darkGoogleMapsStyleWithourMarkers.json in Resources */,
+				B423D5022497CC1E00B25D69 /* darkGoogleMapStyle.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,9 +497,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B423D4BD2492431A00B25D69 /* ViewController.swift in Sources */,
+				B423D4F72492515100B25D69 /* MainView.swift in Sources */,
 				B423D4B92492431A00B25D69 /* AppDelegate.swift in Sources */,
+				B423D4F52492515100B25D69 /* MainBuilder.swift in Sources */,
+				B423D4F82492515100B25D69 /* MainDataFlow.swift in Sources */,
 				B423D4BB2492431A00B25D69 /* SceneDelegate.swift in Sources */,
+				B423D4F32492515100B25D69 /* MainPresenter.swift in Sources */,
+				B423D4F62492515100B25D69 /* MainInteractor.swift in Sources */,
+				B423D4FC2497C7C000B25D69 /* CustomableView.swift in Sources */,
+				B423D4F42492515100B25D69 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,14 +541,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B423D4BE2492431A00B25D69 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B423D4BF2492431A00B25D69 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B423D4C32492431C00B25D69 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -585,7 +673,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 43GGPVXW3Y;
-				INFOPLIST_FILE = FitnessTracker/Info.plist;
+				INFOPLIST_FILE = FitnessTracker/Enviroments/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -594,7 +682,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = YS.FitnessTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -605,7 +693,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 43GGPVXW3Y;
-				INFOPLIST_FILE = FitnessTracker/Info.plist;
+				INFOPLIST_FILE = FitnessTracker/Enviroments/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -614,7 +702,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = YS.FitnessTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
