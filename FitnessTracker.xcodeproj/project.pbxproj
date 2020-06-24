@@ -26,6 +26,9 @@
 		B423D5042497CC1E00B25D69 /* lightGoogleMapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = B423D5002497CC1E00B25D69 /* lightGoogleMapStyle.json */; };
 		B423D5052497CC1E00B25D69 /* lightGoogleMapsStyleWithoutMarkers.json in Resources */ = {isa = PBXBuildFile; fileRef = B423D5012497CC1E00B25D69 /* lightGoogleMapsStyleWithoutMarkers.json */; };
 		B423D5072497D66900B25D69 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = B423D5062497D66900B25D69 /* View.xib */; };
+		B447B49C24A35BB7002DB6E4 /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B447B49B24A35BB7002DB6E4 /* RealmProvider.swift */; };
+		B447B49E24A35C0A002DB6E4 /* RealmCoordinatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B447B49D24A35C0A002DB6E4 /* RealmCoordinatesModel.swift */; };
+		B447B4A024A35C7E002DB6E4 /* RealmTrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B447B49F24A35C7E002DB6E4 /* RealmTrackModel.swift */; };
 		C38D695D4ACB6A1525BD3470 /* Pods_FitnessTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0610BDB163B680113CCA7FF /* Pods_FitnessTrackerTests.framework */; };
 		EE980D78649ED39ADBE10529 /* Pods_FitnessTracker_FitnessTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E1B881A1B0C867E2C784D1 /* Pods_FitnessTracker_FitnessTrackerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -77,6 +80,9 @@
 		B423D5002497CC1E00B25D69 /* lightGoogleMapStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lightGoogleMapStyle.json; sourceTree = "<group>"; };
 		B423D5012497CC1E00B25D69 /* lightGoogleMapsStyleWithoutMarkers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lightGoogleMapsStyleWithoutMarkers.json; sourceTree = "<group>"; };
 		B423D5062497D66900B25D69 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
+		B447B49B24A35BB7002DB6E4 /* RealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
+		B447B49D24A35C0A002DB6E4 /* RealmCoordinatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoordinatesModel.swift; sourceTree = "<group>"; };
+		B447B49F24A35C7E002DB6E4 /* RealmTrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTrackModel.swift; sourceTree = "<group>"; };
 		C0610BDB163B680113CCA7FF /* Pods_FitnessTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitnessTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E291FE48B263B451EF12B80B /* Pods-FitnessTracker-FitnessTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessTracker-FitnessTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-FitnessTracker-FitnessTrackerUITests/Pods-FitnessTracker-FitnessTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F43F57F70B59E027F7760A21 /* Pods_FitnessTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitnessTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +189,7 @@
 		B423D4EA249250F200B25D69 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				B447B49A24A35B9E002DB6E4 /* Models */,
 				B423D4B82492431A00B25D69 /* AppDelegate.swift */,
 				B423D4BA2492431A00B25D69 /* SceneDelegate.swift */,
 				B423D4EB2492510200B25D69 /* Flows */,
@@ -226,6 +233,7 @@
 			children = (
 				B423D4FD2497CBF800B25D69 /* GoogleMapsStyles */,
 				B423D4FB2497C7C000B25D69 /* CustomableView.swift */,
+				B447B49B24A35BB7002DB6E4 /* RealmProvider.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -239,6 +247,15 @@
 				B423D5002497CC1E00B25D69 /* lightGoogleMapStyle.json */,
 			);
 			path = GoogleMapsStyles;
+			sourceTree = "<group>";
+		};
+		B447B49A24A35B9E002DB6E4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B447B49D24A35C0A002DB6E4 /* RealmCoordinatesModel.swift */,
+				B447B49F24A35C7E002DB6E4 /* RealmTrackModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F21418B3FE78EB0F2B9C0FC1 /* Pods */ = {
@@ -266,6 +283,7 @@
 				B423D4B22492431A00B25D69 /* Frameworks */,
 				B423D4B32492431A00B25D69 /* Resources */,
 				745B38627A8F2E8F5E70C2EF /* [CP] Copy Pods Resources */,
+				B0E3F5CE01E7494B58B7581B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -304,6 +322,7 @@
 				B423D4D32492431D00B25D69 /* Frameworks */,
 				B423D4D42492431D00B25D69 /* Resources */,
 				4DFD68C6F1C7C798E6E90136 /* [CP] Copy Pods Resources */,
+				ACB9F3427797DBA619496FD7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -446,6 +465,40 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		ACB9F3427797DBA619496FD7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitnessTracker-FitnessTrackerUITests/Pods-FitnessTracker-FitnessTrackerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitnessTracker-FitnessTrackerUITests/Pods-FitnessTracker-FitnessTrackerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FitnessTracker-FitnessTrackerUITests/Pods-FitnessTracker-FitnessTrackerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0E3F5CE01E7494B58B7581B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B978176742F358EB319EA509 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -501,11 +554,14 @@
 				B423D4B92492431A00B25D69 /* AppDelegate.swift in Sources */,
 				B423D4F52492515100B25D69 /* MainBuilder.swift in Sources */,
 				B423D4F82492515100B25D69 /* MainDataFlow.swift in Sources */,
+				B447B49C24A35BB7002DB6E4 /* RealmProvider.swift in Sources */,
 				B423D4BB2492431A00B25D69 /* SceneDelegate.swift in Sources */,
 				B423D4F32492515100B25D69 /* MainPresenter.swift in Sources */,
+				B447B49E24A35C0A002DB6E4 /* RealmCoordinatesModel.swift in Sources */,
 				B423D4F62492515100B25D69 /* MainInteractor.swift in Sources */,
 				B423D4FC2497C7C000B25D69 /* CustomableView.swift in Sources */,
 				B423D4F42492515100B25D69 /* MainViewController.swift in Sources */,
+				B447B4A024A35C7E002DB6E4 /* RealmTrackModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
