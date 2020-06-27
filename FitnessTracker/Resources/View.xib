@@ -18,8 +18,21 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jua-gE-Q5n">
+                    <rect key="frame" x="143" y="435" width="128" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="LZL-GK-Xqr"/>
+                        <constraint firstAttribute="width" constant="128" id="bkT-ut-isx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="continue" textContentType="password"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="jua-gE-Q5n" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fMw-IY-Gv0"/>
+                <constraint firstItem="jua-gE-Q5n" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wT5-36-M0k"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="139" y="113"/>
         </view>
