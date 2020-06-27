@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol LoginBusinessLogic {
-    func doSomething(request: Login.Something.Request)
+    func requestLogin(request: Login.Login.Request)
 }
 
 final class LoginInteractor: LoginBusinessLogic {
@@ -22,8 +23,17 @@ final class LoginInteractor: LoginBusinessLogic {
         self.presenter = presenter
     }
     
-    // MARK: - Do something
-    func doSomething(request: Login.Something.Request) {
-        
+    // MARK: - Interactor methods
+    func requestLogin(request: Login.Login.Request) {
+        var response: Login.Login.Response
+        if let user = try? RealmProvider.get(RealmUserModel.self)
+            .first (where: { $0.login == request.login }) {
+            response = Login.Login.Response(user: user,
+                                            password: request.password)
+        } else {
+            response = Login.Login.Response(user: nil,
+                                            password: request.password)
+        }
+        presenter.presentLogin(response: response)
     }
 }

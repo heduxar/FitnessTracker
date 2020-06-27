@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Security
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -14,12 +15,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        let navController = UINavigationController()
         
-        guard let windowScene = (scene as? UIWindowScene),
-            let vc = LoginBuilder().build() as? LoginViewController else { fatalError("Couldn't cast to LoginViewController!") }
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene = windowScene
-        window?.rootViewController = vc
+        if UserDefaults.standard.isLogined {
+            guard let windowScene = (scene as? UIWindowScene),
+                let vc = MainBuilder().build() as? MainViewController
+                else { fatalError("Couldn't cast to MainViewController!") }
+            window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+            window?.windowScene = windowScene
+            window?.rootViewController = navController
+            navController.pushViewController(vc, animated: true)
+        } else {
+            guard let windowScene = (scene as? UIWindowScene),
+                let vc = LoginBuilder().build() as? LoginViewController
+                else { fatalError("Couldn't cast to LoginViewController!") }
+            window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+            window?.windowScene = windowScene
+            window?.rootViewController = navController
+            navController.pushViewController(vc, animated: true)
+        }
         
         window?.makeKeyAndVisible()
     }

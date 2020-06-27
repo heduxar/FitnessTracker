@@ -10,12 +10,15 @@ import UIKit
 
 enum Login {
     // MARK: - Use cases
-    enum Something {
+    enum Login {
         struct Request {
+            let login: String
+            let password: String
         }
         
         struct Response {
-            //      var result: AFResult<>
+            let user: RealmUserModel?
+            let password: String
         }
         
         struct ViewModel {
@@ -25,12 +28,11 @@ enum Login {
     
     enum ViewControllerState {
         case initial
-        case result([Any/*viewModel*/])
-        case emptyResult
+        case success
         case failure(error: LoginError)
     }
     
     enum LoginError: Error {
-        case someError(message: String)
+        case loginError, passwordError
     }
 }

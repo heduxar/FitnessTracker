@@ -90,6 +90,7 @@ final class LoginView: UIView {
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 13.0,
                                        weight: .semibold)
+        label.text = "Incorrect password"
         label.isHidden = true
         
         return label
@@ -172,7 +173,7 @@ final class LoginView: UIView {
             loginTextField.centerXAnchor.constraint(equalTo: centerXAnchor,
                                                     constant: 0),
             loginTextField.bottomAnchor.constraint(equalTo: centerYAnchor,
-                                                    constant: -viewMetrics.elementsHeight),
+                                                   constant: -viewMetrics.elementsHeight),
             
             loginErrorLabel.widthAnchor.constraint(equalToConstant: bounds.width / 2),
             loginErrorLabel.centerXAnchor.constraint(equalTo: centerXAnchor,
@@ -185,14 +186,20 @@ final class LoginView: UIView {
             passwordTextField.centerXAnchor.constraint(equalTo: centerXAnchor,
                                                        constant: 0),
             passwordTextField.topAnchor.constraint(equalTo: loginTextField.bottomAnchor,
-                                                       constant: viewMetrics.elementsHeight),
+                                                   constant: viewMetrics.elementsHeight),
+            
+            passwordErrorLabel.widthAnchor.constraint(equalToConstant: bounds.width / 2),
+            passwordErrorLabel.centerXAnchor.constraint(equalTo: centerXAnchor,
+                                                        constant: 0),
+            passwordErrorLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,
+                                                    constant: 0),
             
             loginButton.heightAnchor.constraint(equalToConstant: viewMetrics.elementsHeight),
             loginButton.widthAnchor.constraint(equalToConstant: bounds.width / 3),
             loginButton.centerXAnchor.constraint(equalTo: centerXAnchor,
                                                  constant: 0),
             loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,
-                                                 constant: viewMetrics.elementsHeight),
+                                             constant: viewMetrics.elementsHeight),
             
             registerButton.heightAnchor.constraint(equalToConstant: viewMetrics.elementsHeight),
             registerButton.widthAnchor.constraint(equalToConstant: bounds.width / 3),
@@ -242,7 +249,6 @@ extension LoginView: UITextFieldDelegate {
         default:
             break
         }
-        
         return true
     }
 }

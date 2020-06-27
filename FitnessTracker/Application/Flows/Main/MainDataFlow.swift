@@ -9,28 +9,28 @@
 import UIKit
 
 enum Main {
-  // MARK: - Use cases
-  enum Something {
-    struct Request {
+    // MARK: - Use cases
+    enum Something {
+        struct Request {
+        }
+        
+        struct Response {
+            //      var result: AFResult<>
+        }
+        
+        struct ViewModel {
+            var state: ViewControllerState
+        }
     }
     
-    struct Response {
-//      var result: AFResult<>
+    enum ViewControllerState {
+        case initial
+        case result([Any/*viewModel*/])
+        case emptyResult
+        case failure(error: MainError)
     }
     
-    struct ViewModel {
-      var state: ViewControllerState
+    enum MainError: Error {
+        case someError(message: String)
     }
-  }
-  
-  enum ViewControllerState {
-    case initial
-    case result([Any/*viewModel*/])
-    case emptyResult
-    case failure(error: MainError)
-  }
-  
-  enum MainError: Error {
-    case someError(message: String)
-  }
 }

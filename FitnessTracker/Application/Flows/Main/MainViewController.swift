@@ -46,6 +46,12 @@ final class MainViewController: UIViewController, CustomableView {
         super.viewDidLoad()
         requestLocationAuthorization()
         loadRealmModel()
+        UserDefaults.standard.isLogined = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
     
     // MARK: - Private Methods
@@ -152,7 +158,7 @@ extension MainViewController: MainViewDelegate {
                     try? RealmProvider.delete(item: point)
                 }
                 try? RealmProvider.delete(item: route)
-            
+                
                 loadRealmModel()
             }
             if let location = locationManager.location?.coordinate {

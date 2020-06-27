@@ -40,11 +40,11 @@ extension MainView {
                                        right: 40.0)
         
         let startStopButtonSize = CGSize(width: 50.0,
-                                     height: 50.0)
+                                         height: 50.0)
         let startStopButtonInsets = UIEdgeInsets(top: 0.0,
-                                             left: 40.0,
-                                             bottom: 40.0,
-                                             right: 40.0)
+                                                 left: 40.0,
+                                                 bottom: 40.0,
+                                                 right: 40.0)
         
         let previosTrackHeight: CGFloat = 28.0
     }
@@ -242,8 +242,8 @@ final class MainView: UIView {
     private func updateUserPosition(location: CLLocationCoordinate2D) {
         guard userMarker != nil,
             userMarker?.map != nil else {
-            configureUserMarker()
-            return
+                configureUserMarker()
+                return
         }
         userMarker?.position = location
     }

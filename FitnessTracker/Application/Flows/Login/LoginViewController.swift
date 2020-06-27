@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LoginDisplayLogic: class {
-    func displaySomething(viewModel: Login.Something.ViewModel)
+    func displayLogin(viewModel: Login.Login.ViewModel)
 }
 
 final class LoginViewController: UIViewController, CustomableView {
@@ -39,19 +39,49 @@ final class LoginViewController: UIViewController, CustomableView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+        UserDefaults.standard.isLogined ? goToMain() : nil
     }
     
     // MARK: - Private Methods
-    private func doSomething() {
-        let request = Login.Something.Request()
-        interactor.doSomething(request: request)
+    private func requestLogin() {
+        guard let login = view().loginTextField.text,
+            !login.isEmpty,
+            let password = view().passwordTextField.text,
+            !password.isEmpty else { return }
+        let request = Login.Login.Request(login: login,
+                                          password: password)
+        interactor.requestLogin(request: request)
+    }
+    
+    private func goToMain() {
+        guard let vc = MainBuilder().build() as? MainViewController
+            else { fatalError("Couldn't cast to MainViewController!") }
+        UserDefaults.standard.isLogined = true
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .flipHorizontal
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
+        
+    }
+    
+    private func goToRegistration() {
+        guard let vc = RegistrationBuilder().build() as? RegistrationViewController
+            else { fatalError("Couldn't cast to RegistrationViewController!") }
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .coverVertical
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
     }
 }
 
 // MARK: - Display Logic
 extension LoginViewController: LoginDisplayLogic {
-    func displaySomething(viewModel: Login.Something.ViewModel) {
+    func displayLogin(viewModel: Login.Login.ViewModel) {
         display(newState: viewModel.state)
     }
     
@@ -60,12 +90,17 @@ extension LoginViewController: LoginDisplayLogic {
         switch state {
         case .initial:
             print("initial state")
+            
+        case .success:
+            goToMain()
+            
         case let .failure(error):
-            print("error \(error)")
-        case let .result(items):
-            print("result: \(items)")
-        case .emptyResult:
-            print("empty result")
+            switch error {
+            case .loginError:
+                view().incorrectLogin()
+            case .passwordError:
+                view().incorrectPassword()
+            }
         }
     }
 }
@@ -73,12 +108,10 @@ extension LoginViewController: LoginDisplayLogic {
 // MARK: - View Delegate
 extension LoginViewController: LoginViewDelegate {
     func didTapLogin() {
-        print(#function)
+        requestLogin()
     }
     
     func didTapRegister() {
-        print(#function)
+        goToRegistration()
     }
-    
-    
 }

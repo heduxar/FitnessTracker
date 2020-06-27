@@ -9,21 +9,21 @@
 import UIKit
 
 protocol MainBusinessLogic {
-  func doSomething(request: Main.Something.Request)
+    func doSomething(request: Main.Something.Request)
 }
 
 final class MainInteractor: MainBusinessLogic {
-  
-  // MARK: - Private Properties
-  private let presenter: MainPresentationLogic
-  
-  // MARK: - Object Lifecycle
-  init(presenter: MainPresentationLogic) {
-    self.presenter = presenter
-  }
-  
-  // MARK: - Do something
-  func doSomething(request: Main.Something.Request) {
     
-  }
+    // MARK: - Private Properties
+    private let presenter: MainPresentationLogic
+    
+    // MARK: - Object Lifecycle
+    init(presenter: MainPresentationLogic) {
+        self.presenter = presenter
+    }
+    
+    // MARK: - Do something
+    func doSomething(request: Main.Something.Request) {
+        
+    }
 }

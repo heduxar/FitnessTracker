@@ -9,28 +9,44 @@
 import UIKit
 
 enum Registration {
-  // MARK: - Use cases
-  enum Something {
-    struct Request {
+    // MARK: - Use cases
+    enum CheckUserName {
+        struct Request {
+            let login: String
+        }
+        
+        struct Response {
+            let userExists: Bool
+        }
+        
+        struct ViewModel {
+            var state: ViewControllerState
+        }
     }
     
-    struct Response {
-//      var result: AFResult<>
+    enum RegistrationUser {
+        struct Request {
+            let login: String
+            let password: String
+        }
+        
+        struct Response {
+            let isRegister: Bool
+        }
+        
+        struct ViewModel {
+            var state: ViewControllerState
+        }
     }
     
-    struct ViewModel {
-      var state: ViewControllerState
+    enum ViewControllerState {
+        case initial
+        case success
+        case registration
+        case failure(error: RegistrationError)
     }
-  }
-  
-  enum ViewControllerState {
-    case initial
-    case result([Any/*viewModel*/])
-    case emptyResult
-    case failure(error: RegistrationError)
-  }
-  
-  enum RegistrationError: Error {
-    case someError(message: String)
-  }
+    
+    enum RegistrationError: Error {
+        case userExists, somethingGoneWrong
+    }
 }

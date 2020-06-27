@@ -9,14 +9,14 @@
 import UIKit
 
 protocol MainPresentationLogic {
-  func presentSomething(response: Main.Something.Response)
+    func presentSomething(response: Main.Something.Response)
 }
 
 final class MainPresenter: MainPresentationLogic {
-  weak var viewController: MainDisplayLogic?
-  
-  // MARK: - Present something
-  func presentSomething(response: Main.Something.Response) {
+    weak var viewController: MainDisplayLogic?
     
-  }
+    // MARK: - Present something
+    func presentSomething(response: Main.Something.Response) {
+        
+    }
 }

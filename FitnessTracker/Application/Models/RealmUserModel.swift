@@ -10,7 +10,7 @@ import RealmSwift
 import CryptoKit
 
 final class RealmUserModel: Object {
-    @objc dynamic var loging: String = ""
+    @objc dynamic var login: String = ""
     @objc dynamic var password: String = ""
     
     override class func primaryKey() -> String? {
