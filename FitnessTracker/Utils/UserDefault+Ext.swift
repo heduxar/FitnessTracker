@@ -18,4 +18,14 @@ extension UserDefaults {
             set(newValue, forKey: #function)
         }
     }
+    
+    var isSecuredScreen: Bool {
+        get {
+            register(defaults: [#function : false])
+            return bool(forKey: #function)
+        }
+        set {
+            set(newValue, forKey: #function)
+        }
+    }
 }

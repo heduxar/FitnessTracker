@@ -19,34 +19,42 @@ enum TrackStatus {
     case start, progress, finish
 }
 
+enum FollowStatus {
+    case none, user, route, previousRoute
+}
+
 extension MainView {
     struct ViewMetrics {
-        let locationButtonSize = CGSize(width: 32.0,
-                                        height: 32.0)
-        let locationButtonInsets = UIEdgeInsets(top: 0.0,
-                                                left: 0.0,
-                                                bottom: 8.0,
-                                                right: 8.0)
+        let backgroundColor = UIColor.systemBackground
+    
         let markersColor = UIColor.systemBlue
         let startPointColor = UIColor.systemGreen
         let finishPointColor = UIColor.systemRed
         let routePolylineColor = UIColor.systemBlue
         let routeStrokeWidth: CGFloat = 3
         
+        let buttonSize = CGSize(width: 44.0,
+                                height: 44.0)
+        var buttonsCR:CGFloat { buttonSize.height / 2 }
         
-        let routeInsets = UIEdgeInsets(top: 80.0,
-                                       left: 40.0,
-                                       bottom: 200.0,
-                                       right: 40.0)
+        let buttonsStackSpacing: CGFloat = 8.0
+        let buttonsStackInsets = UIEdgeInsets(top: 0.0,
+                                              left: 28.0,
+                                              bottom: 28.0,
+                                              right: 28.0)
         
-        let startStopButtonSize = CGSize(width: 50.0,
-                                         height: 50.0)
         let startStopButtonInsets = UIEdgeInsets(top: 0.0,
-                                                 left: 40.0,
-                                                 bottom: 40.0,
-                                                 right: 40.0)
+                                                 left: 0.0,
+                                                 bottom: 28.0,
+                                                 right: 0.0)
         
-        let previosTrackHeight: CGFloat = 28.0
+        let locationButtonImageName = "scope"
+        let routeButtonImageName = "arrow.swap"
+        let previosRouteImageName = "map"
+        let startTrackButtonImageName = "play.fill"
+        let stopTrackButtonImageName = "stop.fill"
+        let userMarkImageName = "mappin.and.ellipse"
+        let flagMarkImageName = "flag.circle.fill"
     }
 }
 
@@ -59,7 +67,11 @@ final class MainView: UIView {
     private var routePath: GMSMutablePath?
     private var userMarker: GMSMarker?
     
-    private var isFollowCoordinates = true
+    private var followStatus: FollowStatus = .user {
+        didSet {
+            followStatusChanged()
+        }
+    }
     fileprivate(set) lazy var status: TrackStatus = .start
     
     // MARK: - Public Properties
@@ -68,10 +80,12 @@ final class MainView: UIView {
     // MARK: - View Properties
     fileprivate(set) lazy var mainMap: GMSMapView = {
         let view = GMSMapView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.isTrafficEnabled = true
         view.isIndoorEnabled = false
+        view.isBuildingsEnabled = false
         view.isMyLocationEnabled = false
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.settings.rotateGestures = true
         
         return view
     }()
@@ -79,22 +93,39 @@ final class MainView: UIView {
     fileprivate(set) lazy var myLocationButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setBackgroundImage(UIImage(systemName: "location.circle.fill"),
+        button.backgroundColor = viewMetrics.backgroundColor
+        button.setBackgroundImage(UIImage(systemName: viewMetrics.locationButtonImageName),
                                   for: .normal)
+        button.layer.cornerRadius = viewMetrics.buttonsCR
+        button.layer.masksToBounds = true
         button.tintColor = .systemRed
         button.addTarget(self,
                          action: #selector(didTapLocationButton),
                          for: .touchUpInside)
         
         return button
+    }()
+    
+    fileprivate(set) lazy var routeLocationButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = viewMetrics.backgroundColor
+        button.setBackgroundImage(UIImage(systemName: viewMetrics.routeButtonImageName),
+                                  for: .normal)
+        button.layer.cornerRadius = viewMetrics.buttonsCR
+        button.layer.masksToBounds = true
+        button.tintColor = .systemBlue
+        button.addTarget(self,
+                         action: #selector(didTapRouteButton),
+                         for: .touchUpInside)
         
-        
+        return button
     }()
     
     fileprivate(set) lazy var startRouteButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setBackgroundImage(UIImage(systemName: "play.fill"),
+        button.setBackgroundImage(UIImage(systemName: viewMetrics.startTrackButtonImageName),
                                   for: .normal)
         button.addTarget(self,
                          action: #selector(didTapStartRoute),
@@ -105,22 +136,28 @@ final class MainView: UIView {
     fileprivate(set) lazy var loadPreviousRouteButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "map.fill"),
+        button.backgroundColor = viewMetrics.backgroundColor
+        button.setImage(UIImage(systemName: viewMetrics.previosRouteImageName),
                         for: .normal)
-        button.setTitle("Previous track",
-                        for: .normal)
-        button.setTitleColor(.label,
-                             for: .normal)
-        button.backgroundColor = UIColor.systemBackground
-        button.layer.cornerRadius = viewMetrics.previosTrackHeight / 2
+        button.layer.cornerRadius = viewMetrics.buttonsCR
         button.layer.masksToBounds = true
+        button.tintColor = .systemBlue
         button.addTarget(self,
                          action: #selector(didTapPreviosRoute),
                          for: .touchUpInside)
         return button
     }()
     
-    
+    fileprivate(set) lazy var buttonsStack: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.alignment = .fill
+        stack.axis = .vertical
+        stack.distribution = .fill
+        stack.spacing = viewMetrics.buttonsStackSpacing
+        stack.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        return stack
+    }()
     
     // MARK: - Object Lifecycle
     override init(frame: CGRect = CGRect.zero) {
@@ -141,6 +178,9 @@ final class MainView: UIView {
     // MARK: - View actions
     @objc
     private func didTapLocationButton() {
+        myLocationButton.tintColor = .systemRed
+        routeLocationButton.tintColor = .systemBlue
+        followStatus = followStatus != .user ? .user : .none
         delegate?.didTapLocationButton()
     }
     
@@ -149,8 +189,18 @@ final class MainView: UIView {
         delegate?.didTapStartStopButton()
     }
     
-    @objc func didTapPreviosRoute() {
-        delegate?.didTapPreviosRoute()
+    @objc
+    private func didTapPreviosRoute() {
+        followStatus != .previousRoute ?
+            delegate?.didTapPreviosRoute() : nil
+    }
+    
+    @objc
+    private func didTapRouteButton() {
+        zoomToRoutePath()
+        myLocationButton.tintColor = .systemBlue
+        routeLocationButton.tintColor = .systemRed
+        followStatus = followStatus != .route ? .route : .none
     }
     
     // MARK: - Private Methods
@@ -160,9 +210,11 @@ final class MainView: UIView {
     
     private func addSubviews() {
         addSubview(mainMap)
-        addSubview(myLocationButton)
+        addSubview(buttonsStack)
+        buttonsStack.addArrangedSubview(loadPreviousRouteButton)
+        buttonsStack.addArrangedSubview(routeLocationButton)
+        buttonsStack.addArrangedSubview(myLocationButton)
         addSubview(startRouteButton)
-        addSubview(loadPreviousRouteButton)
     }
     
     private func makeConstraints() {
@@ -172,25 +224,48 @@ final class MainView: UIView {
             mainMap.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
             mainMap.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
             
-            myLocationButton.heightAnchor.constraint(equalToConstant: viewMetrics.locationButtonSize.height),
-            myLocationButton.widthAnchor.constraint(equalToConstant: viewMetrics.locationButtonSize.width),
-            myLocationButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor,
-                                                    constant: -viewMetrics.locationButtonInsets.right),
-            myLocationButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,
-                                                     constant: -viewMetrics.locationButtonInsets.bottom),
+            buttonsStack.rightAnchor.constraint(equalTo: rightAnchor,
+                                                constant: -viewMetrics.buttonsStackInsets.right),
+            buttonsStack.bottomAnchor.constraint(equalTo: startRouteButton.topAnchor,
+                                                 constant: -viewMetrics.buttonsStackInsets.bottom),
             
-            startRouteButton.heightAnchor.constraint(equalToConstant: viewMetrics.startStopButtonSize.height),
-            startRouteButton.widthAnchor.constraint(equalToConstant: viewMetrics.startStopButtonSize.width),
+            myLocationButton.heightAnchor.constraint(equalToConstant: viewMetrics.buttonSize.height),
+            myLocationButton.widthAnchor.constraint(equalToConstant: viewMetrics.buttonSize.width),
+            
+            routeLocationButton.heightAnchor.constraint(equalToConstant: viewMetrics.buttonSize.height),
+            routeLocationButton.widthAnchor.constraint(equalToConstant: viewMetrics.buttonSize.width),
+            
+            loadPreviousRouteButton.heightAnchor.constraint(equalToConstant: viewMetrics.buttonSize.height),
+            loadPreviousRouteButton.widthAnchor.constraint(equalToConstant: viewMetrics.buttonSize.width),
+            
+            startRouteButton.heightAnchor.constraint(equalToConstant: viewMetrics.buttonSize.height),
+            startRouteButton.widthAnchor.constraint(equalToConstant: viewMetrics.buttonSize.width),
             startRouteButton.centerXAnchor.constraint(equalTo: centerXAnchor,
                                                       constant: 0),
-            startRouteButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -viewMetrics.startStopButtonInsets.bottom),
-            
-            loadPreviousRouteButton.heightAnchor.constraint(equalToConstant: viewMetrics.previosTrackHeight),
-            loadPreviousRouteButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,
-                                                         constant: 15),
-            loadPreviousRouteButton.centerXAnchor.constraint(equalTo: centerXAnchor,
-                                                             constant: 0)
+            startRouteButton.bottomAnchor.constraint(equalTo: bottomAnchor,
+                                                     constant: -viewMetrics.startStopButtonInsets.bottom)
         ])
+    }
+    
+    private func followStatusChanged() {
+        switch followStatus {
+        case .none:
+            myLocationButton.tintColor = .systemBlue
+            routeLocationButton.tintColor = .systemBlue
+            loadPreviousRouteButton.tintColor = .systemBlue
+        case .route:
+            myLocationButton.tintColor = .systemBlue
+            routeLocationButton.tintColor = .systemRed
+            loadPreviousRouteButton.tintColor = .systemBlue
+        case .user:
+            myLocationButton.tintColor = .systemRed
+            routeLocationButton.tintColor = .systemBlue
+            loadPreviousRouteButton.tintColor = .systemBlue
+        case .previousRoute:
+            myLocationButton.tintColor = .systemBlue
+            routeLocationButton.tintColor = .systemBlue
+            loadPreviousRouteButton.tintColor = .systemRed
+        }
     }
     
     private func configureMapStyle() {
@@ -221,7 +296,7 @@ final class MainView: UIView {
     
     private func configureUserMarker() {
         userMarker = GMSMarker()
-        let imageView = UIImageView(image: UIImage(systemName: "person.circle.fill"))
+        let imageView = UIImageView(image: UIImage(systemName: viewMetrics.userMarkImageName))
         imageView.tintColor = viewMetrics.markersColor
         userMarker?.iconView = imageView
         userMarker?.map = mainMap
@@ -229,8 +304,12 @@ final class MainView: UIView {
     
     private func zoomToRoutePath() {
         guard let routePath = routePath else { return }
+        let routeInsets = UIEdgeInsets(top: 28.0,
+                                       left: 28.0,
+                                       bottom: (bounds.height - buttonsStack.frame.maxY),
+                                       right: 28.0)
         mainMap.animate(with: GMSCameraUpdate.fit(GMSCoordinateBounds(path: routePath),
-                                                  with: viewMetrics.routeInsets))
+                                                  with: routeInsets))
     }
     
     private func zoomToUser(coordinates: CLLocationCoordinate2D) {
@@ -251,30 +330,49 @@ final class MainView: UIView {
     // MARK: - Public methods
     func updateLocation(location: CLLocationCoordinate2D) {
         updateUserPosition(location: location)
-        isFollowCoordinates ?
-            zoomToUser(coordinates: location) : zoomToRoutePath()
-    }
-    
-    func zoomToLocationSwitcher(location: CLLocationCoordinate2D) {
-        isFollowCoordinates.toggle()
-        if isFollowCoordinates {
-            myLocationButton.tintColor = .systemRed
+        switch followStatus {
+        case .none:
+            break
+        case .user:
             zoomToUser(coordinates: location)
-        } else {
-            myLocationButton.tintColor = .systemBlue
+        case .route:
             zoomToRoutePath()
+        case .previousRoute:
+            break
         }
     }
     
+//    func zoomToLocationSwitcher(location: CLLocationCoordinate2D) {
+//        isFollowCoordinates.toggle()
+//        if isFollowCoordinates {
+//            myLocationButton.tintColor = .systemRed
+//            zoomToUser(coordinates: location)
+//        } else {
+//            myLocationButton.tintColor = .systemBlue
+//            zoomToRoutePath()
+//        }
+//    }
+    
     func setStatus(status: TrackStatus) {
         self.status = status
+        switch status {
+        case .start:
+            startRouteButton.setBackgroundImage(UIImage(systemName: viewMetrics.startTrackButtonImageName),
+                                                for: .normal)
+        case .progress:
+            startRouteButton.setBackgroundImage(UIImage(systemName: viewMetrics.stopTrackButtonImageName),
+                                                for: .normal)
+            
+        case .finish:
+            break
+        }
     }
     
     func setStartMarker(location: CLLocationCoordinate2D) {
         let marker = GMSMarker(position: location)
-        let imageView = UIImageView(image: UIImage(systemName: "flag.circle.fill"))
+        let imageView = UIImageView(image: UIImage(systemName: viewMetrics.flagMarkImageName))
         imageView.tintColor = viewMetrics.startPointColor
-        marker.snippet = "Was here at \(Date().description(with: .current))"
+        marker.snippet = "Start here at \(Date().description(with: .current))"
         
         marker.iconView = imageView
         marker.map = mainMap
@@ -294,9 +392,9 @@ final class MainView: UIView {
     
     func setFinishMarker(location: CLLocationCoordinate2D) {
         let marker = GMSMarker(position: location)
-        let imageView = UIImageView(image: UIImage(systemName: "flag.circle.fill"))
+        let imageView = UIImageView(image: UIImage(systemName: viewMetrics.flagMarkImageName))
         imageView.tintColor = viewMetrics.finishPointColor
-        marker.snippet = "Was here at \(Date().description(with: .current))"
+        marker.snippet = "Ended here at \(Date().description(with: .current))"
         
         marker.iconView = imageView
         marker.map = mainMap
@@ -320,10 +418,7 @@ final class MainView: UIView {
         }
         self.route?.path = routePath
         
-        if isFollowCoordinates {
-            isFollowCoordinates.toggle()
-            myLocationButton.tintColor = .systemBlue
-            zoomToRoutePath()
-        }
+        followStatus = .previousRoute
+        zoomToRoutePath()
     }
 }
