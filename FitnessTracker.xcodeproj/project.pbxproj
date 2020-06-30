@@ -29,6 +29,21 @@
 		B447B49C24A35BB7002DB6E4 /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B447B49B24A35BB7002DB6E4 /* RealmProvider.swift */; };
 		B447B49E24A35C0A002DB6E4 /* RealmCoordinatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B447B49D24A35C0A002DB6E4 /* RealmCoordinatesModel.swift */; };
 		B447B4A024A35C7E002DB6E4 /* RealmTrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B447B49F24A35C7E002DB6E4 /* RealmTrackModel.swift */; };
+		B45B08C424A74F640017EB3F /* RealmUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08C324A74F640017EB3F /* RealmUserModel.swift */; };
+		B45B08CC24A752130017EB3F /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08C624A752130017EB3F /* LoginPresenter.swift */; };
+		B45B08CD24A752130017EB3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08C724A752130017EB3F /* LoginViewController.swift */; };
+		B45B08CE24A752130017EB3F /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08C824A752130017EB3F /* LoginBuilder.swift */; };
+		B45B08CF24A752130017EB3F /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08C924A752130017EB3F /* LoginInteractor.swift */; };
+		B45B08D024A752130017EB3F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08CA24A752130017EB3F /* LoginView.swift */; };
+		B45B08D124A752130017EB3F /* LoginDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08CB24A752130017EB3F /* LoginDataFlow.swift */; };
+		B45B08D924A752340017EB3F /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08D324A752340017EB3F /* RegistrationPresenter.swift */; };
+		B45B08DA24A752340017EB3F /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08D424A752340017EB3F /* RegistrationViewController.swift */; };
+		B45B08DB24A752340017EB3F /* RegistrationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08D524A752340017EB3F /* RegistrationBuilder.swift */; };
+		B45B08DC24A752340017EB3F /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08D624A752340017EB3F /* RegistrationInteractor.swift */; };
+		B45B08DD24A752340017EB3F /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08D724A752340017EB3F /* RegistrationView.swift */; };
+		B45B08DE24A752340017EB3F /* RegistrationDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08D824A752340017EB3F /* RegistrationDataFlow.swift */; };
+		B45B08E124A760D20017EB3F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08E024A760D20017EB3F /* UIView+Ext.swift */; };
+		B45B08E324A797BB0017EB3F /* UserDefault+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08E224A797BB0017EB3F /* UserDefault+Ext.swift */; };
 		C38D695D4ACB6A1525BD3470 /* Pods_FitnessTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0610BDB163B680113CCA7FF /* Pods_FitnessTrackerTests.framework */; };
 		EE980D78649ED39ADBE10529 /* Pods_FitnessTracker_FitnessTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E1B881A1B0C867E2C784D1 /* Pods_FitnessTracker_FitnessTrackerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -83,6 +98,21 @@
 		B447B49B24A35BB7002DB6E4 /* RealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
 		B447B49D24A35C0A002DB6E4 /* RealmCoordinatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoordinatesModel.swift; sourceTree = "<group>"; };
 		B447B49F24A35C7E002DB6E4 /* RealmTrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTrackModel.swift; sourceTree = "<group>"; };
+		B45B08C324A74F640017EB3F /* RealmUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserModel.swift; sourceTree = "<group>"; };
+		B45B08C624A752130017EB3F /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		B45B08C724A752130017EB3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B45B08C824A752130017EB3F /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
+		B45B08C924A752130017EB3F /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		B45B08CA24A752130017EB3F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B45B08CB24A752130017EB3F /* LoginDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataFlow.swift; sourceTree = "<group>"; };
+		B45B08D324A752340017EB3F /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		B45B08D424A752340017EB3F /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		B45B08D524A752340017EB3F /* RegistrationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationBuilder.swift; sourceTree = "<group>"; };
+		B45B08D624A752340017EB3F /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
+		B45B08D724A752340017EB3F /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		B45B08D824A752340017EB3F /* RegistrationDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDataFlow.swift; sourceTree = "<group>"; };
+		B45B08E024A760D20017EB3F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		B45B08E224A797BB0017EB3F /* UserDefault+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Ext.swift"; sourceTree = "<group>"; };
 		C0610BDB163B680113CCA7FF /* Pods_FitnessTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitnessTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E291FE48B263B451EF12B80B /* Pods-FitnessTracker-FitnessTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessTracker-FitnessTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-FitnessTracker-FitnessTrackerUITests/Pods-FitnessTracker-FitnessTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F43F57F70B59E027F7760A21 /* Pods_FitnessTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitnessTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,10 +219,10 @@
 		B423D4EA249250F200B25D69 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				B447B49A24A35B9E002DB6E4 /* Models */,
 				B423D4B82492431A00B25D69 /* AppDelegate.swift */,
 				B423D4BA2492431A00B25D69 /* SceneDelegate.swift */,
 				B423D4EB2492510200B25D69 /* Flows */,
+				B447B49A24A35B9E002DB6E4 /* Models */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -200,12 +230,14 @@
 		B423D4EB2492510200B25D69 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				B423D4EC2492513700B25D69 /* MainScreen */,
+				B45B08C524A751DE0017EB3F /* Login */,
+				B423D4EC2492513700B25D69 /* Main */,
+				B45B08D224A752230017EB3F /* Registration */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
 		};
-		B423D4EC2492513700B25D69 /* MainScreen */ = {
+		B423D4EC2492513700B25D69 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				B423D4EF2492515100B25D69 /* MainBuilder.swift */,
@@ -215,7 +247,7 @@
 				B423D4F12492515100B25D69 /* MainView.swift */,
 				B423D4EE2492515100B25D69 /* MainViewController.swift */,
 			);
-			path = MainScreen;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		B423D4F92492519A00B25D69 /* Resources */ = {
@@ -234,6 +266,8 @@
 				B423D4FD2497CBF800B25D69 /* GoogleMapsStyles */,
 				B423D4FB2497C7C000B25D69 /* CustomableView.swift */,
 				B447B49B24A35BB7002DB6E4 /* RealmProvider.swift */,
+				B45B08E024A760D20017EB3F /* UIView+Ext.swift */,
+				B45B08E224A797BB0017EB3F /* UserDefault+Ext.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -254,8 +288,35 @@
 			children = (
 				B447B49D24A35C0A002DB6E4 /* RealmCoordinatesModel.swift */,
 				B447B49F24A35C7E002DB6E4 /* RealmTrackModel.swift */,
+				B45B08C324A74F640017EB3F /* RealmUserModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B45B08C524A751DE0017EB3F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B45B08C824A752130017EB3F /* LoginBuilder.swift */,
+				B45B08CB24A752130017EB3F /* LoginDataFlow.swift */,
+				B45B08C924A752130017EB3F /* LoginInteractor.swift */,
+				B45B08C624A752130017EB3F /* LoginPresenter.swift */,
+				B45B08CA24A752130017EB3F /* LoginView.swift */,
+				B45B08C724A752130017EB3F /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B45B08D224A752230017EB3F /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				B45B08D524A752340017EB3F /* RegistrationBuilder.swift */,
+				B45B08D824A752340017EB3F /* RegistrationDataFlow.swift */,
+				B45B08D624A752340017EB3F /* RegistrationInteractor.swift */,
+				B45B08D324A752340017EB3F /* RegistrationPresenter.swift */,
+				B45B08D724A752340017EB3F /* RegistrationView.swift */,
+				B45B08D424A752340017EB3F /* RegistrationViewController.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		F21418B3FE78EB0F2B9C0FC1 /* Pods */ = {
@@ -550,18 +611,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B45B08CF24A752130017EB3F /* LoginInteractor.swift in Sources */,
+				B45B08D924A752340017EB3F /* RegistrationPresenter.swift in Sources */,
+				B45B08C424A74F640017EB3F /* RealmUserModel.swift in Sources */,
 				B423D4F72492515100B25D69 /* MainView.swift in Sources */,
+				B45B08DB24A752340017EB3F /* RegistrationBuilder.swift in Sources */,
+				B45B08CC24A752130017EB3F /* LoginPresenter.swift in Sources */,
+				B45B08CD24A752130017EB3F /* LoginViewController.swift in Sources */,
 				B423D4B92492431A00B25D69 /* AppDelegate.swift in Sources */,
+				B45B08DC24A752340017EB3F /* RegistrationInteractor.swift in Sources */,
 				B423D4F52492515100B25D69 /* MainBuilder.swift in Sources */,
 				B423D4F82492515100B25D69 /* MainDataFlow.swift in Sources */,
 				B447B49C24A35BB7002DB6E4 /* RealmProvider.swift in Sources */,
 				B423D4BB2492431A00B25D69 /* SceneDelegate.swift in Sources */,
 				B423D4F32492515100B25D69 /* MainPresenter.swift in Sources */,
 				B447B49E24A35C0A002DB6E4 /* RealmCoordinatesModel.swift in Sources */,
+				B45B08DD24A752340017EB3F /* RegistrationView.swift in Sources */,
+				B45B08D024A752130017EB3F /* LoginView.swift in Sources */,
 				B423D4F62492515100B25D69 /* MainInteractor.swift in Sources */,
+				B45B08D124A752130017EB3F /* LoginDataFlow.swift in Sources */,
 				B423D4FC2497C7C000B25D69 /* CustomableView.swift in Sources */,
+				B45B08CE24A752130017EB3F /* LoginBuilder.swift in Sources */,
+				B45B08E324A797BB0017EB3F /* UserDefault+Ext.swift in Sources */,
+				B45B08DA24A752340017EB3F /* RegistrationViewController.swift in Sources */,
+				B45B08E124A760D20017EB3F /* UIView+Ext.swift in Sources */,
 				B423D4F42492515100B25D69 /* MainViewController.swift in Sources */,
 				B447B4A024A35C7E002DB6E4 /* RealmTrackModel.swift in Sources */,
+				B45B08DE24A752340017EB3F /* RegistrationDataFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
