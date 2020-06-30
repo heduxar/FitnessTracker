@@ -69,6 +69,7 @@ final class LoginView: UIView {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
         textField.spellCheckingType = .no
         textField.isSecureTextEntry = true
         textField.clearButtonMode = .whileEditing
