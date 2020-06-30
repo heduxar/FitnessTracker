@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol LoginViewDelegate: class {
     func didTapLogin()
@@ -31,6 +33,7 @@ final class LoginView: UIView {
     
     // MARK: - Private Properties
     private let viewMetrics = ViewMetrics()
+    private let bag = DisposeBag()
     
     // MARK: - Public Properties
     weak var delegate: LoginViewDelegate?
@@ -102,10 +105,13 @@ final class LoginView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(viewMetrics.loginButtonText,
                         for: .normal)
+        button.setTitleColor(UIColor.gray,
+                             for: .disabled)
         button.titleLabel?.textAlignment = .center
         button.backgroundColor = UIColor.systemTeal
         button.layer.cornerRadius = viewMetrics.buttonsCR
         button.layer.masksToBounds = true
+        button.isEnabled = false
         button.addTarget(self,
                          action: #selector(didTapLogin),
                          for: .touchUpInside)
