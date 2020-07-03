@@ -40,6 +40,7 @@ final class RegistrationViewController: UIViewController, CustomableView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.isSecuredScreen = true
         configureNavController()
     }
     

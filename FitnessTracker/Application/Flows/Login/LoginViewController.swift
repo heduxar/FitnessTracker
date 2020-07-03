@@ -39,6 +39,7 @@ final class LoginViewController: UIViewController, CustomableView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.isSecuredScreen = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

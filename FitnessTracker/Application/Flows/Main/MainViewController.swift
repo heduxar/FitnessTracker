@@ -44,9 +44,9 @@ final class MainViewController: UIViewController, CustomableView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.isSecuredScreen = false
         requestLocationAuthorization()
         loadRealmModel()
-        UserDefaults.standard.isLogined = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -142,8 +142,7 @@ extension MainViewController: MainDisplayLogic {
 // MARK: - View Delegate
 extension MainViewController: MainViewDelegate {
     func didTapLocationButton() {
-        guard let location = locationManager.location else { return }
-        view().zoomToLocationSwitcher(location: location.coordinate)
+        zoomToLocation()
     }
     
     func didTapStartStopButton() {
@@ -151,8 +150,7 @@ extension MainViewController: MainViewDelegate {
         case .start:
             startBackgroundTrack()
             view().setStatus(status: .progress)
-            view().startRouteButton.setBackgroundImage(UIImage(systemName: "stop.fill"),
-                                                       for: .normal)
+            
             if let route = route {
                 route.locationPoints.forEach { point in
                     try? RealmProvider.delete(item: point)
@@ -161,6 +159,7 @@ extension MainViewController: MainViewDelegate {
                 
                 loadRealmModel()
             }
+            
             if let location = locationManager.location?.coordinate {
                 view().clearMap {
                     view().updateLocation(location: location)
@@ -168,21 +167,24 @@ extension MainViewController: MainViewDelegate {
                     view().addRoutePoint(point: location)
                 }
             }
+            
         case .progress:
             view().setStatus(status: .start)
-            view().startRouteButton.setBackgroundImage(UIImage(systemName: "play.fill"),
-                                                       for: .normal)
+            
             if let route = route,
                 let location = locationManager.location?.coordinate {
                 try? RealmProvider.save(items: [route])
                 view().addRoutePoint(point: location)
                 view().setFinishMarker(location: location)
-                
             }
+            
             finishBackgroundTrack()
+            
         case .finish:
             break
         }
+        
+        view().updateLocation(location: locationManager.location!.coordinate)
     }
     
     func didTapPreviosRoute() {
@@ -190,7 +192,8 @@ extension MainViewController: MainViewDelegate {
             //TODO: Alert stop track
             didTapStartStopButton()
         }
-        guard let route = try? RealmProvider.get(RealmTrackModel.self).first else { return }
+        guard let route = try? RealmProvider.get(RealmTrackModel.self).first,
+            !route.locationPoints.isEmpty else { return }
         let previosRoute: [CLLocationCoordinate2D] = route.locationPoints.compactMap {$0.coordinate}
         view().setRoute(route: previosRoute)
     }
