@@ -12,6 +12,7 @@ import CoreLocation
 final class RealmCoordinatesModel: Object {
     @objc dynamic var latitude = 0.0
     @objc dynamic var longitude = 0.0
+    @objc dynamic var date = Date()
     
     var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(

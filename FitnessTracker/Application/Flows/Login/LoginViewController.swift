@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol LoginDisplayLogic: class {
     func displayLogin(viewModel: Login.Login.ViewModel)
@@ -18,6 +20,9 @@ final class LoginViewController: UIViewController, CustomableView {
     // MARK: - Private Properties
     private let interactor: LoginBusinessLogic
     private var state: Login.ViewControllerState
+    private var observeLogin: Observable<String>? = nil
+    private var observePassword: Observable<String>? = nil
+    private let bag = DisposeBag()
     
     // MARK: - Object Lifecycle
     init(interactor: LoginBusinessLogic, initialState: Login.ViewControllerState = .initial) {
@@ -40,6 +45,7 @@ final class LoginViewController: UIViewController, CustomableView {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.isSecuredScreen = true
+        fillObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +55,21 @@ final class LoginViewController: UIViewController, CustomableView {
     }
     
     // MARK: - Private Methods
+    private func fillObserver() {
+        Observable.combineLatest(
+            view().loginTextField.rx.text.orEmpty,
+            view().passwordTextField.rx.text.orEmpty
+        )
+            .map { login, password in
+                return !(login ?? "").isEmpty && !(password ?? "").isEmpty
+        }
+        .subscribe { [weak self] loginButtonEnabled in
+            self?.view().loginButton.alpha = loginButtonEnabled.element! ? 1.0 : 0.5
+            self?.view().loginButton.isEnabled = loginButtonEnabled.element!
+        }
+        .disposed(by: bag)
+    }
+    
     private func requestLogin() {
         guard let login = view().loginTextField.text,
             !login.isEmpty,

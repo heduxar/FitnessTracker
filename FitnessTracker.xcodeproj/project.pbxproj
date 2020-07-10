@@ -29,6 +29,7 @@
 		B447B49C24A35BB7002DB6E4 /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B447B49B24A35BB7002DB6E4 /* RealmProvider.swift */; };
 		B447B49E24A35C0A002DB6E4 /* RealmCoordinatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B447B49D24A35C0A002DB6E4 /* RealmCoordinatesModel.swift */; };
 		B447B4A024A35C7E002DB6E4 /* RealmTrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B447B49F24A35C7E002DB6E4 /* RealmTrackModel.swift */; };
+		B454C00324AF482500D21812 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B454C00224AF482500D21812 /* LocationManager.swift */; };
 		B45B08C424A74F640017EB3F /* RealmUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08C324A74F640017EB3F /* RealmUserModel.swift */; };
 		B45B08CC24A752130017EB3F /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08C624A752130017EB3F /* LoginPresenter.swift */; };
 		B45B08CD24A752130017EB3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B08C724A752130017EB3F /* LoginViewController.swift */; };
@@ -98,6 +99,7 @@
 		B447B49B24A35BB7002DB6E4 /* RealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
 		B447B49D24A35C0A002DB6E4 /* RealmCoordinatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoordinatesModel.swift; sourceTree = "<group>"; };
 		B447B49F24A35C7E002DB6E4 /* RealmTrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTrackModel.swift; sourceTree = "<group>"; };
+		B454C00224AF482500D21812 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B45B08C324A74F640017EB3F /* RealmUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserModel.swift; sourceTree = "<group>"; };
 		B45B08C624A752130017EB3F /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		B45B08C724A752130017EB3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -263,11 +265,10 @@
 		B423D4FA2497C7A500B25D69 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B454C00124AF47CE00D21812 /* Extensions */,
+				B454C00024AF47BF00D21812 /* Location */,
+				B454BFFF24AF47AF00D21812 /* Realm */,
 				B423D4FD2497CBF800B25D69 /* GoogleMapsStyles */,
-				B423D4FB2497C7C000B25D69 /* CustomableView.swift */,
-				B447B49B24A35BB7002DB6E4 /* RealmProvider.swift */,
-				B45B08E024A760D20017EB3F /* UIView+Ext.swift */,
-				B45B08E224A797BB0017EB3F /* UserDefault+Ext.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -291,6 +292,32 @@
 				B45B08C324A74F640017EB3F /* RealmUserModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B454BFFF24AF47AF00D21812 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				B447B49B24A35BB7002DB6E4 /* RealmProvider.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		B454C00024AF47BF00D21812 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				B454C00224AF482500D21812 /* LocationManager.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		B454C00124AF47CE00D21812 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B423D4FB2497C7C000B25D69 /* CustomableView.swift */,
+				B45B08E024A760D20017EB3F /* UIView+Ext.swift */,
+				B45B08E224A797BB0017EB3F /* UserDefault+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B45B08C524A751DE0017EB3F /* Login */ = {
@@ -635,6 +662,7 @@
 				B45B08E324A797BB0017EB3F /* UserDefault+Ext.swift in Sources */,
 				B45B08DA24A752340017EB3F /* RegistrationViewController.swift in Sources */,
 				B45B08E124A760D20017EB3F /* UIView+Ext.swift in Sources */,
+				B454C00324AF482500D21812 /* LocationManager.swift in Sources */,
 				B423D4F42492515100B25D69 /* MainViewController.swift in Sources */,
 				B447B4A024A35C7E002DB6E4 /* RealmTrackModel.swift in Sources */,
 				B45B08DE24A752340017EB3F /* RegistrationDataFlow.swift in Sources */,

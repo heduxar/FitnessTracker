@@ -9,6 +9,8 @@
 import UIKit
 import CoreLocation
 import RealmSwift
+import RxSwift
+import RxCocoa
 
 protocol MainDisplayLogic: class {
     func displaySomething(viewModel: Main.Something.ViewModel)
@@ -21,8 +23,9 @@ final class MainViewController: UIViewController, CustomableView {
     private let interactor: MainBusinessLogic
     private var state: Main.ViewControllerState
     private var route: RealmTrackModel?
-    private let locationManager = CLLocationManager()
+    private let locationManager = LocationManager.instance
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+    private let bag = DisposeBag()
     
     // MARK: - Object Lifecycle
     init(interactor: MainBusinessLogic, initialState: Main.ViewControllerState = .initial) {
@@ -45,8 +48,8 @@ final class MainViewController: UIViewController, CustomableView {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.isSecuredScreen = false
-        requestLocationAuthorization()
         loadRealmModel()
+        configureLocationManager()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,25 +58,19 @@ final class MainViewController: UIViewController, CustomableView {
     }
     
     // MARK: - Private Methods
-    private func requestLocationAuthorization() {
-        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        locationManager.allowsBackgroundLocationUpdates = true
-        locationManager.pausesLocationUpdatesAutomatically = false
-        locationManager.delegate = self
-        
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
-    }
-    
     private func loadRealmModel() {
-        guard let route = try? RealmProvider.get(RealmTrackModel.self).first else {
+        guard let route = try? RealmProvider.get(RealmTrackModel.self).last else {
             self.route = RealmTrackModel()
             self.route?.id = 1
+            self.route?.startTime = Date()
             try? RealmProvider.save(items: [self.route!])
             return
         }
-        self.route = route
+        let newRoute = RealmTrackModel()
+        newRoute.id = route.id + 1
+        newRoute.startTime = Date()
+        self.route = newRoute
+        try? RealmProvider.save(items: [self.route!])
     }
     
     private func startBackgroundTrack() {
@@ -89,8 +86,29 @@ final class MainViewController: UIViewController, CustomableView {
         backgroundTask = .invalid
     }
     
+    private func configureLocationManager() {
+        locationManager
+            .location
+            .asObservable()
+            .bind { [weak self] location in
+                guard let self = self,
+                    let location = location
+                    else { return }
+                self.view().updateLocation(location: location.coordinate)
+                switch self.view().status {
+                case .progress:
+                    self.addRealmPoint(location: location.coordinate)
+                    self.view().addRoutePoint(point: location.coordinate)
+                default:
+                    break
+                }
+        }
+        .disposed(by: bag)
+        locationManager.startUpdatingLocation()
+    }
+    
     private func zoomToLocation() {
-        guard let location = locationManager.location?.coordinate else { return }
+        guard let location = locationManager.location.value?.coordinate else { return }
         view().updateLocation(location: location)
     }
     
@@ -110,11 +128,39 @@ final class MainViewController: UIViewController, CustomableView {
         let realmCoordinates = RealmCoordinatesModel()
         realmCoordinates.latitude = location.latitude
         realmCoordinates.longitude = location.longitude
+        realmCoordinates.date = Date()
         guard let realm = try? Realm(configuration: .defaultConfiguration) else { return }
         try! realm.write {
             route?.locationPoints.append(realmCoordinates)
         }
+    }
+    
+    private func showStopTrackAlert() {
+        let alert: UIAlertController = {
+            let alertController = UIAlertController(title: "Stop track?",
+                                                    message: "Are you sure want to stop track current route?",
+                                                    preferredStyle: .actionSheet)
+            let stopButton = UIAlertAction(title: "Stop",
+                                      style: .destructive) { [weak self] _ in
+                                        guard let currenID = self?.route?.id,
+                                            let route = try? RealmProvider.get(RealmTrackModel.self)
+                                            .first(where: { $0.id == (currenID - 1)}),
+                                            !route.locationPoints.isEmpty else { return }
+                                        self?.didTapStartStopButton()
+                                        self?.view().setRoute(route: route)
+            }
+            let continuousButton = UIAlertAction(title: "Continue",
+                                                 style: .default) { _ in alertController.dismiss(animated: true,
+                                                                                                    completion: nil)
+            }
+            
+            alertController.addAction(continuousButton)
+            alertController.addAction(stopButton)
+            
+            return alertController
+        }()
         
+        self.present(alert, animated: true)
     }
 }
 
@@ -151,16 +197,16 @@ extension MainViewController: MainViewDelegate {
             startBackgroundTrack()
             view().setStatus(status: .progress)
             
-            if let route = route {
-                route.locationPoints.forEach { point in
-                    try? RealmProvider.delete(item: point)
-                }
-                try? RealmProvider.delete(item: route)
-                
-                loadRealmModel()
-            }
+//            if let route = route {
+//                route.locationPoints.forEach { point in
+//                    try? RealmProvider.delete(item: point)
+//                }
+//                try? RealmProvider.delete(item: route)
+//
+//                loadRealmModel()
+//            }
             
-            if let location = locationManager.location?.coordinate {
+            if let location = locationManager.location.value?.coordinate {
                 view().clearMap {
                     view().updateLocation(location: location)
                     view().setStartMarker(location: location)
@@ -170,9 +216,12 @@ extension MainViewController: MainViewDelegate {
             
         case .progress:
             view().setStatus(status: .start)
-            
             if let route = route,
-                let location = locationManager.location?.coordinate {
+                let location = locationManager.location.value?.coordinate {
+                guard let realm = try? Realm(configuration: .defaultConfiguration) else { return }
+                try! realm.write {
+                    route.endTime = Date()
+                }
                 try? RealmProvider.save(items: [route])
                 view().addRoutePoint(point: location)
                 view().setFinishMarker(location: location)
@@ -184,18 +233,20 @@ extension MainViewController: MainViewDelegate {
             break
         }
         
-        view().updateLocation(location: locationManager.location!.coordinate)
+        view().updateLocation(location: locationManager.location.value?.coordinate)
     }
     
     func didTapPreviosRoute() {
         if view().status == .progress {
-            //TODO: Alert stop track
-            didTapStartStopButton()
+            showStopTrackAlert()
+        } else {
+            guard let currentID = self.route?.id,
+                let route = try? RealmProvider.get(RealmTrackModel.self)
+                .first(where: { $0.id == currentID - 1 }),
+                !route.locationPoints.isEmpty else { return }
+            view().setRoute(route: route)
         }
-        guard let route = try? RealmProvider.get(RealmTrackModel.self).first,
-            !route.locationPoints.isEmpty else { return }
-        let previosRoute: [CLLocationCoordinate2D] = route.locationPoints.compactMap {$0.coordinate}
-        view().setRoute(route: previosRoute)
+        
     }
 }
 
@@ -226,4 +277,8 @@ extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
+}
+
+extension MainViewController {
+    
 }

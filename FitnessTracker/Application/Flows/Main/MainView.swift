@@ -328,7 +328,8 @@ final class MainView: UIView {
     }
     
     // MARK: - Public methods
-    func updateLocation(location: CLLocationCoordinate2D) {
+    func updateLocation(location: CLLocationCoordinate2D?) {
+        guard let location = location else { return }
         updateUserPosition(location: location)
         switch followStatus {
         case .none:
@@ -368,18 +369,19 @@ final class MainView: UIView {
         }
     }
     
-    func setStartMarker(location: CLLocationCoordinate2D) {
+    func setStartMarker(location: CLLocationCoordinate2D, date: Date? = nil) {
         let marker = GMSMarker(position: location)
         let imageView = UIImageView(image: UIImage(systemName: viewMetrics.flagMarkImageName))
         imageView.tintColor = viewMetrics.startPointColor
-        marker.snippet = "Start here at \(Date().description(with: .current))"
+        marker.snippet = "Start here at \(date?.description(with: .current) ?? "unknown")"
         
         marker.iconView = imageView
         marker.map = mainMap
     }
     
     func addRoutePoint(point: CLLocationCoordinate2D) {
-        if let route = route, let routePath = routePath {
+        if let route = route,
+            let routePath = routePath {
             routePath.add(point)
             route.path = routePath
         } else {
@@ -390,11 +392,11 @@ final class MainView: UIView {
         }
     }
     
-    func setFinishMarker(location: CLLocationCoordinate2D) {
+    func setFinishMarker(location: CLLocationCoordinate2D, date: Date? = nil) {
         let marker = GMSMarker(position: location)
         let imageView = UIImageView(image: UIImage(systemName: viewMetrics.flagMarkImageName))
         imageView.tintColor = viewMetrics.finishPointColor
-        marker.snippet = "Ended here at \(Date().description(with: .current))"
+        marker.snippet = "Ended here at \(date?.description(with: .current) ?? "unknown")"
         
         marker.iconView = imageView
         marker.map = mainMap
@@ -407,15 +409,19 @@ final class MainView: UIView {
         routePath = nil
     }
     
-    func setRoute(route: [CLLocationCoordinate2D]){
+    func setRoute(route: RealmTrackModel){
         mainMap.clear()
         configureMapRoute()
+        setStartMarker(location: route.locationPoints.first!.coordinate,
+                       date: route.startTime)
         
-        setStartMarker(location: route.first!)
-        setFinishMarker(location: route.last!)
-        route.forEach { point in
-            routePath?.add(point)
+        setFinishMarker(location: route.locationPoints.last!.coordinate,
+                        date: route.endTime)
+        
+        route.locationPoints.forEach { point in
+            routePath?.add(point.coordinate)
         }
+        
         self.route?.path = routePath
         
         followStatus = .previousRoute
