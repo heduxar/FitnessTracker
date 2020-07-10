@@ -205,7 +205,7 @@ extension MainViewController: MainViewDelegate {
 //
 //                loadRealmModel()
 //            }
-            
+            UserDefaults.standard.isTrackRoute = true
             if let location = locationManager.location.value?.coordinate {
                 view().clearMap {
                     view().updateLocation(location: location)
@@ -216,6 +216,7 @@ extension MainViewController: MainViewDelegate {
             
         case .progress:
             view().setStatus(status: .start)
+            UserDefaults.standard.isTrackRoute = false
             if let route = route,
                 let location = locationManager.location.value?.coordinate {
                 guard let realm = try? Realm(configuration: .defaultConfiguration) else { return }
