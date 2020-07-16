@@ -9,10 +9,10 @@
 import UIKit
 
 extension UserDefaults {
-    var isLogined: Bool {
+    var isLoginedUserID: Int {
         get {
-            register(defaults: [#function: false])
-            return bool(forKey: #function)
+            register(defaults: [#function: 0])
+            return integer(forKey: #function)
         }
         set {
             set(newValue, forKey: #function)

@@ -60,14 +60,17 @@ final class MainViewController: UIViewController, CustomableView {
     // MARK: - Private Methods
     private func loadRealmModel() {
         guard let route = try? RealmProvider.get(RealmTrackModel.self).last else {
-            self.route = RealmTrackModel()
-            self.route?.id = 1
-            self.route?.startTime = Date()
-            try? RealmProvider.save(items: [self.route!])
+            let route = RealmTrackModel()
+            route.id = route.incrementID()
+            route.userID = UserDefaults.standard.isLoginedUserID
+            route.startTime = Date()
+            self.route = route
+            try? RealmProvider.save(items: [route])
             return
         }
         let newRoute = RealmTrackModel()
-        newRoute.id = route.id + 1
+        newRoute.id = route.incrementID()
+        newRoute.userID = UserDefaults.standard.isLoginedUserID
         newRoute.startTime = Date()
         self.route = newRoute
         try? RealmProvider.save(items: [self.route!])
@@ -130,8 +133,12 @@ final class MainViewController: UIViewController, CustomableView {
         realmCoordinates.longitude = location.longitude
         realmCoordinates.date = Date()
         guard let realm = try? Realm(configuration: .defaultConfiguration) else { return }
-        try! realm.write {
-            route?.locationPoints.append(realmCoordinates)
+        do {
+            try realm.write {
+                route?.locationPoints.append(realmCoordinates)
+            }
+        } catch {
+            debugPrint(error.localizedDescription)
         }
     }
     
@@ -187,6 +194,22 @@ extension MainViewController: MainDisplayLogic {
 
 // MARK: - View Delegate
 extension MainViewController: MainViewDelegate {
+    func didTapExit() {
+        print("❌ ❌ ❌ ❌ ❌ ❌")
+        guard let rootNavController = UIApplication.shared.windows
+            .first?.rootViewController as? UINavigationController,
+            let vc = LoginBuilder().build() as? LoginViewController
+            else {
+                UserDefaults.standard.removeObject(forKey: "isLoginedUserID")
+                return }
+        vc.modalPresentationStyle = .overFullScreen
+        self.dismiss(animated: true) {
+            UserDefaults.standard.removeObject(forKey: "isLoginedUserID")
+            rootNavController.pushViewController(vc,
+                                                 animated: true)
+        }
+    }
+    
     func didTapLocationButton() {
         zoomToLocation()
     }
@@ -197,14 +220,6 @@ extension MainViewController: MainViewDelegate {
             startBackgroundTrack()
             view().setStatus(status: .progress)
             
-//            if let route = route {
-//                route.locationPoints.forEach { point in
-//                    try? RealmProvider.delete(item: point)
-//                }
-//                try? RealmProvider.delete(item: route)
-//
-//                loadRealmModel()
-//            }
             UserDefaults.standard.isTrackRoute = true
             if let location = locationManager.location.value?.coordinate {
                 view().clearMap {
@@ -220,8 +235,12 @@ extension MainViewController: MainViewDelegate {
             if let route = route,
                 let location = locationManager.location.value?.coordinate {
                 guard let realm = try? Realm(configuration: .defaultConfiguration) else { return }
-                try! realm.write {
-                    route.endTime = Date()
+                do {
+                    try realm.write {
+                        route.endTime = Date()
+                    }
+                } catch {
+                    UserDefaults.standard.isLoginedUserID = 0
                 }
                 try? RealmProvider.save(items: [route])
                 view().addRoutePoint(point: location)
@@ -278,8 +297,4 @@ extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
-}
-
-extension MainViewController {
-    
 }

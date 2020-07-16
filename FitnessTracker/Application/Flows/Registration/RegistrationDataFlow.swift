@@ -28,10 +28,12 @@ enum Registration {
         struct Request {
             let login: String
             let password: String
+            let userAvatar: UIImage?
         }
         
         struct Response {
             let isRegister: Bool
+            let userID: Int?
         }
         
         struct ViewModel {
@@ -41,7 +43,7 @@ enum Registration {
     
     enum ViewControllerState {
         case initial
-        case success
+        case success(userID: Int)
         case registration
         case failure(error: RegistrationError)
     }

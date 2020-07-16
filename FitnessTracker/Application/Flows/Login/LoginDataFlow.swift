@@ -28,7 +28,7 @@ enum Login {
     
     enum ViewControllerState {
         case initial
-        case success
+        case success(userID: Int)
         case failure(error: LoginError)
     }
     

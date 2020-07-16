@@ -51,7 +51,10 @@ final class LoginViewController: UIViewController, CustomableView {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        UserDefaults.standard.isLogined ? goToMain() : nil
+        if try! RealmProvider.get(RealmUserModel.self).count > 0,
+            UserDefaults.standard.isLoginedUserID != 0 {
+                goToMain()
+        }
     }
     
     // MARK: - Private Methods
@@ -61,7 +64,7 @@ final class LoginViewController: UIViewController, CustomableView {
             view().passwordTextField.rx.text.orEmpty
         )
             .map { login, password in
-                return !(login ?? "").isEmpty && !(password ?? "").isEmpty
+                return !login.isEmpty && !password.isEmpty
         }
         .subscribe { [weak self] loginButtonEnabled in
             self?.view().loginButton.alpha = loginButtonEnabled.element! ? 1.0 : 0.5
@@ -83,7 +86,6 @@ final class LoginViewController: UIViewController, CustomableView {
     private func goToMain() {
         guard let vc = MainBuilder().build() as? MainViewController
             else { fatalError("Couldn't cast to MainViewController!") }
-        UserDefaults.standard.isLogined = true
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .flipHorizontal
         navigationController?.pushViewController(vc,
@@ -113,7 +115,8 @@ extension LoginViewController: LoginDisplayLogic {
         case .initial:
             print("initial state")
             
-        case .success:
+        case .success(let userID):
+            UserDefaults.standard.isLoginedUserID = userID
             goToMain()
             
         case let .failure(error):
