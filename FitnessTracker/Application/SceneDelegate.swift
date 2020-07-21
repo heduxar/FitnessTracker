@@ -38,15 +38,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
 
-    func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
-    }
-
     func sceneDidBecomeActive(_ scene: UIScene) {
         visualEffectView.removeFromSuperview()
+        if UIApplication.shared.applicationIconBadgeNumber > 0 {
+            UIApplication.shared.applicationIconBadgeNumber -= 1
+        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -65,12 +61,61 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        print("BackgroundMode")
+        guard !UserDefaults.standard.isTrackRoute else { return }
+        UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
+            guard let content = self?.makeNotificationContent(),
+                let trigger = self?.makeIntervalNotificatioTrigger(),
+                settings.authorizationStatus == .authorized else {
+                    debugPrint("Notification denied")
+                    return
+            }
+            self?.sendNotificatioRequest(content: content,
+                                         trigger: trigger)
+        }
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
+    
+    // MARK: - Private methods
+    private func makeNotificationContent() -> UNNotificationContent {
+        let content = UNMutableNotificationContent()
+        content.title = "FitnessTracker still active"
+        content.body = "🔋 Close app for save your battery 🔋"
+        content.sound = .defaultCritical
+        DispatchQueue.main.async {
+           content.badge = NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + 1)
+        }
+        return content
+    }
+    
+    private func makeIntervalNotificatioTrigger() -> UNNotificationTrigger {
+        UNTimeIntervalNotificationTrigger(
+            timeInterval: 60*30,
+            repeats: false
+        )
+    }
+    
+    private func makeDateNotificationTrigger() -> UNNotificationTrigger {
+        var date = DateComponents()
+        date.hour = 19
+        date.minute = 0
+        return UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
+    }
+    
+    private func sendNotificatioRequest(content: UNNotificationContent,
+                                        trigger: UNNotificationTrigger) {
+        let request = UNNotificationRequest(
+            identifier: "\(Bundle.main.bundleIdentifier ?? "")_notify",
+            content: content,
+            trigger: trigger
+        )
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
