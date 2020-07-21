@@ -10,10 +10,17 @@ import RealmSwift
 import CryptoKit
 
 final class RealmUserModel: Object {
+    @objc dynamic var id: Int = 0
     @objc dynamic var login: String = ""
     @objc dynamic var password: String = ""
+    @objc dynamic var userAvatar: Data = Data()
     
     override class func primaryKey() -> String? {
-        return "login"
+        "id"
+    }
+    
+    func incrementID() -> Int {
+        let realm = try! Realm()
+        return (realm.objects(RealmUserModel.self).max(ofProperty: "id") as Int? ?? 0) + 1
     }
 }

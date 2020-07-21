@@ -8,6 +8,7 @@
 
 import UIKit
 import Security
+import RealmSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,7 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         let navController = UINavigationController()
         
-        if UserDefaults.standard.isLogined {
+        print(try! RealmProvider.get(RealmUserModel.self).count > 0)
+        
+        if try! RealmProvider.get(RealmUserModel.self).count > 0 &&
+            UserDefaults.standard.isLoginedUserID != 0 {
             guard let windowScene = (scene as? UIWindowScene),
                 let vc = MainBuilder().build() as? MainViewController
                 else { fatalError("Couldn't cast to MainViewController!") }

@@ -10,6 +10,7 @@ import UIKit
 
 protocol RegistrationViewDelegate: class {
     func didTapRegister()
+    func didTapPickAvatar()
 }
 
 extension RegistrationView {
@@ -24,10 +25,15 @@ extension RegistrationView {
         let registerButtonText = "Finish"
         var registerButtonCR: CGFloat { elementsHeight / 3 }
         
-        let titleLabelInsets = UIEdgeInsets(top: 50.0,
+        let titleLabelInsets = UIEdgeInsets(top: 25.0,
                                             left: 16.0,
                                             bottom: 50.0,
                                             right: 16.0)
+        
+        let avatarPlaceholderImageName = "avatar_placeholder"
+        let avatarTintColor = UIColor.systemGray2
+        
+        let photoIconImageName = "icon_camera"
     }
 }
 
@@ -35,20 +41,32 @@ final class RegistrationView: UIView {
     
     // MARK: - Private Properties
     private let viewMetrics = ViewMetrics()
+    private let gestureAvatarPicker = UIGestureRecognizer()
     
     // MARK: - Public Properties
     weak var delegate: RegistrationViewDelegate?
     
     // MARK: - View Properties
-    fileprivate(set) lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.textColor = .label
-        label.text = viewMetrics.registrationLabel
-        label.font = UIFont.systemFont(ofSize: 25,
-                                       weight: .heavy)
-        return label
+    fileprivate(set) lazy var avatarPicker: UIButton = {
+        let avatarPicker = UIButton()
+        avatarPicker.translatesAutoresizingMaskIntoConstraints = false
+        avatarPicker.addTarget(self,
+                               action: #selector(didTapPickAvatar),
+                               for: .touchUpInside)
+        avatarPicker.setBackgroundImage(UIImage(named: viewMetrics.avatarPlaceholderImageName),
+                                        for: .normal)
+        avatarPicker.tintColor = viewMetrics.avatarTintColor
+        
+        return avatarPicker
+    }()
+    
+    fileprivate(set) lazy var photoIcon: UIImageView = {
+        let photoIcon = UIImageView(image: UIImage(named: viewMetrics.photoIconImageName))
+        photoIcon.translatesAutoresizingMaskIntoConstraints = false
+        photoIcon.backgroundColor = UIColor.systemGray5.withAlphaComponent(0.5)
+        photoIcon.tintColor = UIColor.systemGray
+        
+        return photoIcon
     }()
     
     fileprivate(set) lazy var loginTextField: UITextField = {
@@ -98,6 +116,19 @@ final class RegistrationView: UIView {
         return textField
     }()
     
+    fileprivate(set) lazy var passwordErrorLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.systemRed
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 13.0,
+                                       weight: .semibold)
+        label.text = "Incorrect password"
+        label.isHidden = true
+        
+        return label
+    }()
+    
     fileprivate(set) lazy var registerButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -132,34 +163,47 @@ final class RegistrationView: UIView {
         delegate?.didTapRegister()
     }
     
+    @objc
+    private func didTapPickAvatar() {
+        delegate?.didTapPickAvatar()
+    }
+    
     // MARK: - Private Methods
     private func setupView() {
         backgroundColor = viewMetrics.backgroundColor
+        avatarPicker.layer.cornerRadius = avatarPicker.frame.height / 2
+        avatarPicker.layer.masksToBounds = true
+        photoIcon.layer.cornerRadius = photoIcon.frame.height / 2
+        photoIcon.layer.masksToBounds = true
     }
     
     private func addSubviews() {
-        addSubview(titleLabel)
+        addSubview(avatarPicker)
+        avatarPicker.addSubview(photoIcon)
         addSubview(loginTextField)
         addSubview(loginErrorLabel)
         addSubview(passwordTextField)
+        addSubview(passwordErrorLabel)
         addSubview(registerButton)
     }
     
     private func makeConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor,
-                                                constant: 0),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor,
-                                            constant: viewMetrics.titleLabelInsets.top),
-            titleLabel.bottomAnchor.constraint(equalTo: loginTextField.topAnchor,
-                                               constant: -viewMetrics.titleLabelInsets.bottom),
+            avatarPicker.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
+            avatarPicker.heightAnchor.constraint(equalTo: avatarPicker.widthAnchor, multiplier: 1),
+            avatarPicker.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            photoIcon.widthAnchor.constraint(equalTo: avatarPicker.widthAnchor, multiplier: 0.5),
+            photoIcon.heightAnchor.constraint(equalTo: avatarPicker.heightAnchor, multiplier: 0.5),
+            photoIcon.centerXAnchor.constraint(equalTo: avatarPicker.centerXAnchor),
+            photoIcon.centerYAnchor.constraint(equalTo: avatarPicker.centerYAnchor),
             
             loginTextField.widthAnchor.constraint(equalToConstant: bounds.width / 2),
             loginTextField.heightAnchor.constraint(equalToConstant: viewMetrics.elementsHeight),
-            loginTextField.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor,
+            loginTextField.centerXAnchor.constraint(equalTo: centerXAnchor,
                                                     constant: 0),
-            loginTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                                constant: viewMetrics.titleLabelInsets.bottom),
+            loginTextField.topAnchor.constraint(equalTo: avatarPicker.bottomAnchor,
+                                                constant: viewMetrics.titleLabelInsets.top),
             loginTextField.bottomAnchor.constraint(equalTo: topAnchor,
                                                    constant: bounds.height / 3),
             
@@ -176,19 +220,36 @@ final class RegistrationView: UIView {
             passwordTextField.topAnchor.constraint(equalTo: loginTextField.bottomAnchor,
                                                    constant: viewMetrics.elementsHeight),
             
+            passwordErrorLabel.widthAnchor.constraint(equalToConstant: bounds.width / 2),
+            passwordErrorLabel.centerXAnchor.constraint(equalTo: centerXAnchor,
+                                                        constant: 0),
+            passwordErrorLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,
+                                                    constant: 0),
+            
             registerButton.heightAnchor.constraint(equalToConstant: viewMetrics.elementsHeight),
             registerButton.widthAnchor.constraint(equalToConstant: bounds.width / 3),
             registerButton.centerXAnchor.constraint(equalTo: centerXAnchor,
                                                     constant: 0),
-            registerButton.centerYAnchor.constraint(equalTo: passwordTextField.bottomAnchor,
+            registerButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,
                                                     constant: viewMetrics.elementsHeight)
         ])
     }
     
     // MARK: - Public methods
-    func showLoginExists() {
+    func showLoginError(text: String) {
+        loginErrorLabel.text = text
         loginErrorLabel.show()
         loginTextField.shake(duration: 0.3)
+        loginTextField.layer.borderWidth = 1.3
+        loginTextField.layer.borderColor = UIColor.systemRed.cgColor
+    }
+    
+    func showPasswordError(text: String) {
+        passwordErrorLabel.text = text
+        passwordErrorLabel.show()
+        passwordTextField.shake(duration: 0.3)
+        passwordTextField.layer.borderWidth = 1.3
+        passwordTextField.layer.borderColor = UIColor.systemRed.cgColor
     }
 }
 
@@ -214,6 +275,12 @@ extension RegistrationView: UITextFieldDelegate {
         switch textField {
         case loginTextField:
             loginErrorLabel.hide()
+            loginTextField.layer.borderWidth = 0
+            loginTextField.layer.borderColor = nil
+        case passwordTextField:
+            passwordErrorLabel.hide()
+            passwordTextField.layer.borderWidth = 0
+            passwordTextField.layer.borderColor = nil
         default:
             break
         }

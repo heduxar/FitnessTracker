@@ -38,17 +38,24 @@ final class RegistrationInteractor: RegistrationBusinessLogic {
     }
     
     func registerUser(request: Registration.RegistrationUser.Request) {
-        guard let passHash = SHA256.hash(data: Data(request.password.utf8))
-            .compactMap { String(format: "%02x", $0) }.first else { return }
         let user = RealmUserModel()
+        user.id = user.incrementID()
         user.login = request.login
-        user.password = passHash
+        user.password = SHA256.hash(data: Data(request.password.utf8))
+            .compactMap { String(format: "%02x", $0) }.joined()
+        
+        if let imageData = request.userAvatar?.pngData() {
+            user.userAvatar = imageData
+        }
+        
         let response: Registration.RegistrationUser.Response
         do {
             try RealmProvider.save(items: [user])
-            response = Registration.RegistrationUser.Response(isRegister: true)
+            response = Registration.RegistrationUser.Response(isRegister: true,
+                                                              userID: user.id)
         } catch {
-            response = Registration.RegistrationUser.Response(isRegister: false)
+            response = Registration.RegistrationUser.Response(isRegister: false,
+                                                              userID: 0)
         }
         presenter.presentUserRegistration(response: response)
     }

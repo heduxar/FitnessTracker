@@ -30,7 +30,7 @@ final class RegistrationPresenter: RegistrationPresentationLogic {
     func presentUserRegistration(response: Registration.RegistrationUser.Response) {
         var viewModel:Registration.RegistrationUser.ViewModel
         if response.isRegister {
-            viewModel = Registration.RegistrationUser.ViewModel(state: .success)
+            viewModel = Registration.RegistrationUser.ViewModel(state: .success(userID: response.userID!))
         } else {
             viewModel = Registration.RegistrationUser.ViewModel(state: .failure(error: .somethingGoneWrong))
         }

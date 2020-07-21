@@ -13,6 +13,7 @@ protocol MainViewDelegate: class {
     func didTapLocationButton()
     func didTapStartStopButton()
     func didTapPreviosRoute()
+    func didTapExit()
 }
 
 enum TrackStatus {
@@ -28,6 +29,7 @@ extension MainView {
         let backgroundColor = UIColor.systemBackground
     
         let markersColor = UIColor.systemBlue
+        let markersSize = CGSize(width: 24.0, height: 24.0)
         let startPointColor = UIColor.systemGreen
         let finishPointColor = UIColor.systemRed
         let routePolylineColor = UIColor.systemBlue
@@ -47,6 +49,12 @@ extension MainView {
                                                  left: 0.0,
                                                  bottom: 28.0,
                                                  right: 0.0)
+        let exitButtonSize = CGSize(width: 28.0,
+                                    height: 28.0)
+        let exitButtonInsets = UIEdgeInsets(top: 4.0,
+                                            left: 4.0,
+                                            bottom: 0.0,
+                                            right: 0.0)
         
         let locationButtonImageName = "scope"
         let routeButtonImageName = "arrow.swap"
@@ -59,7 +67,6 @@ extension MainView {
 }
 
 final class MainView: UIView {
-    
     // MARK: - Private Properties
     private let viewMetrics = ViewMetrics()
     
@@ -88,6 +95,22 @@ final class MainView: UIView {
         view.settings.rotateGestures = true
         
         return view
+    }()
+    
+    fileprivate(set) lazy var exitButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(named: "icon_close"),
+                                  for: .normal)
+        button.backgroundColor = UIColor.systemBackground
+        button.tintColor = UIColor.label
+        button.layer.frame.size = viewMetrics.exitButtonSize
+        button.layer.cornerRadius = viewMetrics.exitButtonSize.height / 2
+        button.layer.masksToBounds = true
+        button.addTarget(self,
+                         action: #selector(didTapExit),
+                         for: .touchUpInside)
+        return button
     }()
     
     fileprivate(set) lazy var myLocationButton: UIButton = {
@@ -203,6 +226,11 @@ final class MainView: UIView {
         followStatus = followStatus != .route ? .route : .none
     }
     
+    @objc
+    private func didTapExit() {
+        delegate?.didTapExit()
+    }
+    
     // MARK: - Private Methods
     private func setupView() {
         configureMapStyle()
@@ -211,6 +239,7 @@ final class MainView: UIView {
     private func addSubviews() {
         addSubview(mainMap)
         addSubview(buttonsStack)
+        addSubview(exitButton)
         buttonsStack.addArrangedSubview(loadPreviousRouteButton)
         buttonsStack.addArrangedSubview(routeLocationButton)
         buttonsStack.addArrangedSubview(myLocationButton)
@@ -219,10 +248,17 @@ final class MainView: UIView {
     
     private func makeConstraints() {
         NSLayoutConstraint.activate([
-            mainMap.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-            mainMap.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
-            mainMap.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
-            mainMap.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            mainMap.topAnchor.constraint(equalTo: topAnchor),
+            mainMap.leftAnchor.constraint(equalTo: leftAnchor),
+            mainMap.rightAnchor.constraint(equalTo: rightAnchor),
+            mainMap.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            exitButton.widthAnchor.constraint(equalToConstant: viewMetrics.exitButtonSize.width),
+            exitButton.heightAnchor.constraint(equalToConstant: viewMetrics.exitButtonSize.height),
+            exitButton.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor,
+                                            constant: viewMetrics.exitButtonInsets.top),
+            exitButton.leftAnchor.constraint(equalTo: layoutMarginsGuide.leftAnchor,
+                                             constant: viewMetrics.exitButtonInsets.left),
             
             buttonsStack.rightAnchor.constraint(equalTo: rightAnchor,
                                                 constant: -viewMetrics.buttonsStackInsets.right),
@@ -295,9 +331,26 @@ final class MainView: UIView {
     }
     
     private func configureUserMarker() {
+        guard let user = try? RealmProvider.get(RealmUserModel.self)
+            .first(where: { $0.id == UserDefaults.standard.isLoginedUserID }),
+            !user.userAvatar.isEmpty,
+            let image = UIImage(data: user.userAvatar)
+            else {
+                userMarker = GMSMarker()
+                let imageView = UIImageView(image: UIImage(named: "avatar_placeholder"))
+                imageView.frame.size = viewMetrics.markersSize
+                imageView.tintColor = viewMetrics.markersColor
+                userMarker?.iconView = imageView
+                userMarker?.map = mainMap
+                return
+        }
         userMarker = GMSMarker()
-        let imageView = UIImageView(image: UIImage(systemName: viewMetrics.userMarkImageName))
-        imageView.tintColor = viewMetrics.markersColor
+        let imageView = UIImageView(image: image)
+        imageView.layer.borderWidth = 1.0
+        imageView.layer.borderColor = viewMetrics.markersColor.cgColor
+        imageView.frame.size = viewMetrics.markersSize
+        imageView.layer.cornerRadius = viewMetrics.markersSize.height / 2
+        imageView.layer.masksToBounds = true
         userMarker?.iconView = imageView
         userMarker?.map = mainMap
     }
@@ -343,17 +396,6 @@ final class MainView: UIView {
         }
     }
     
-//    func zoomToLocationSwitcher(location: CLLocationCoordinate2D) {
-//        isFollowCoordinates.toggle()
-//        if isFollowCoordinates {
-//            myLocationButton.tintColor = .systemRed
-//            zoomToUser(coordinates: location)
-//        } else {
-//            myLocationButton.tintColor = .systemBlue
-//            zoomToRoutePath()
-//        }
-//    }
-    
     func setStatus(status: TrackStatus) {
         self.status = status
         switch status {
@@ -372,6 +414,7 @@ final class MainView: UIView {
     func setStartMarker(location: CLLocationCoordinate2D, date: Date? = nil) {
         let marker = GMSMarker(position: location)
         let imageView = UIImageView(image: UIImage(systemName: viewMetrics.flagMarkImageName))
+        imageView.frame.size = viewMetrics.markersSize
         imageView.tintColor = viewMetrics.startPointColor
         marker.snippet = "Start here at \(date?.description(with: .current) ?? "unknown")"
         
@@ -394,7 +437,9 @@ final class MainView: UIView {
     
     func setFinishMarker(location: CLLocationCoordinate2D, date: Date? = nil) {
         let marker = GMSMarker(position: location)
-        let imageView = UIImageView(image: UIImage(systemName: viewMetrics.flagMarkImageName))
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: viewMetrics.flagMarkImageName)
+        imageView.frame.size = CGSize(width: 25.0, height: 25.0)
         imageView.tintColor = viewMetrics.finishPointColor
         marker.snippet = "Ended here at \(date?.description(with: .current) ?? "unknown")"
         
